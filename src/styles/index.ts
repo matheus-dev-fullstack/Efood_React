@@ -2,13 +2,10 @@ import { createGlobalStyle } from 'styled-components'
 import styled from 'styled-components'
 
 export const cores = {
-  corTexto: '#000',
-  corTextSecudario: '#808080',
-  corFundo: '#f2f2f2',
-  corSecundaria: '#d9d9d9',
-  corPrincipal: '#f1f3f4',
-  branco: '#fff',
-  cinzaFraco: '#e6e6e6'
+  corTexto: '#E66767',
+  corFundo: '#F5F5F5',
+  corPrincipal: '#FFEBD9',
+  branco: '#ffffff'
 }
 
 export const GlobalStyle = createGlobalStyle`
@@ -20,18 +17,14 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
 
     body{
-      background-color:${cores.corPrincipal}
+      background-color:${cores.corFundo}
     }
 
-    overflow-y: hidden;
+    // overflow-y: hidden;
   }
 `
 export const MainContainer = styled.div`
-  margin-top: 63px;
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 100%;
 `
 export const Button = styled.button`
   display: flex;
