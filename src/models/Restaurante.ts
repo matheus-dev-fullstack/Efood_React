@@ -3,8 +3,8 @@ class Restaurant {
   name: string
   description: string
   image: string
-  // infos: string[]
-  // category: string
+  infos: string[]
+  // more: string
   stars: number
 
   constructor(
@@ -12,16 +12,16 @@ class Restaurant {
     name: string,
     description: string,
     image: string,
-    // infos: string[],
-    // category: string,
+    infos: string[],
+    // more: string,
     stars: number
   ) {
     this.id = id
     this.name = name
     this.description = description
     this.image = image
-    // this.infos = infos
-    // this.category = category
+    this.infos = infos
+    // this.more = more
     this.stars = stars
   }
 }

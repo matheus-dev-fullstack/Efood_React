@@ -4,7 +4,7 @@ import styled from 'styled-components'
 export const cores = {
   corTexto: '#E66767',
   corFundo: '#F5F5F5',
-  corPrincipal: '#FFEBD9',
+  bege: '#FFEBD9',
   branco: '#ffffff'
 }
 
@@ -16,31 +16,19 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 
-    body{
-      background-color:${cores.corFundo}
+    body {
+      background-color:${cores.corFundo};
     }
 
-    // overflow-y: hidden;
+    .container {
+      width: 1024px;
+      width: 100%;
+      margin: 0 auto;
+    }
   }
 `
 export const MainContainer = styled.div`
   display: flex;
-`
-export const Button = styled.button`
-  display: flex;
-  border-radius: 50%;
-  border: none;
-  height: 45px;
-  width: 45px;
-  justify-content: center;
-  align-items: center;
-  background-color: ${cores.corFundo};
-
-  :hover {
-    background-color: #e6e6e6;
-  }
-  img {
-    width: 50%;
-    height: 50%;
-  }
+  max-width: 1024px;
+  width: 100%;
 `

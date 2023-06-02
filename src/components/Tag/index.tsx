@@ -2,11 +2,20 @@ import { TagContainer } from './styles'
 
 export type Props = {
   size?: 'small' | 'big'
-  children: string
+  type?: 'tag' | 'button'
+  children?: string
 }
 
-const Tag = ({ children, size = 'small' }: Props) => (
-  <TagContainer size={size}>{children}</TagContainer>
-)
+const Tag = ({ children, size = 'small', type = 'tag' }: Props) => {
+  let content = children
 
+  if (type === 'button') {
+    content = 'Saiba mais'
+  }
+  return (
+    <TagContainer size={size} type={type}>
+      {content}
+    </TagContainer>
+  )
+}
 export default Tag
