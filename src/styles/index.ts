@@ -15,17 +15,19 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+    }
 
     body {
-      background-color:${cores.corFundo};
+      background-color:${cores.corTexto};
     }
 
     .container {
-      width: 1024px;
-      width: 100%;
-      margin: 0 auto;
+      padding: 0 auto;
+      max-width: 1024px
+      margin: auto;
+      // padding-left: 15%;
+      // padding-right: 15%;
     }
-  }
 `
 export const MainContainer = styled.div`
   display: flex;

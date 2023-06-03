@@ -2,6 +2,7 @@ import Tag from '../Tag'
 import sushi from '../../assets/sushi.jpg'
 import star from '../../assets/star_favorite-[#1499].png'
 import * as S from './styles'
+import { Link } from 'react-router-dom'
 
 type Props = {
   name: string
@@ -11,14 +12,6 @@ type Props = {
   infos: string[]
   image: string
 }
-
-// const Restaurant1 = {
-//   name: 'Hioki Sushi',
-//   description: 'Description',
-//   stars: 4.9,
-//   infos: ['Destaque da Semana'],
-//   more: 'Saber mais'
-// }
 
 const RestaurantCard = ({ name, description, image, infos, stars }: Props) => {
   return (
@@ -35,9 +28,11 @@ const RestaurantCard = ({ name, description, image, infos, stars }: Props) => {
           {stars}
           <img src={star} alt="" />
         </S.Stars>
-        <S.Button>
-          <Tag size="big" type="button"></Tag>
-        </S.Button>
+        <Link to={'/perfil'}>
+          <S.Button>
+            <Tag size="big" type="button"></Tag>
+          </S.Button>
+        </Link>
         <p>{description}</p>
       </S.Div>
     </S.Card>

@@ -3,7 +3,8 @@ import { cores } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 
 export const Card = styled.div`
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   position: relative;
 
   width: 472px;

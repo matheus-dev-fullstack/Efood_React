@@ -1,9 +1,8 @@
 import Restaurant from '../../models/Restaurante'
+import RestaurantList from '../../components/RestaurantList'
 import sushi from '../../assets/sushi.jpg'
 import massa from '../../assets/massa.jpg'
-import RestautantList from '../RestaurantList'
-import Header from '../Header'
-import { MainContainer } from '../../styles'
+import Header from '../../components/Header'
 
 const bestRestaurants: Restaurant[] = [
   {
@@ -62,11 +61,11 @@ const bestRestaurants: Restaurant[] = [
   }
 ]
 
-const TesteRestaurantes = () => (
+const Home = () => (
   <>
-    {/* <Header /> */}
-    <RestautantList places={bestRestaurants} />
+    <Header />
+    <RestaurantList places={bestRestaurants} />
   </>
 )
 
-export default TesteRestaurantes
+export default Home
