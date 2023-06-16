@@ -9,6 +9,13 @@ export const Card = styled.div`
 
   width: 472px;
   height: 400px;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 216px;
+    object-fit: cover;
+  }
 `
 export const Div = styled.div`
   background-color: ${cores.branco};

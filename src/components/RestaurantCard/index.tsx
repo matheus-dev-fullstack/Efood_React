@@ -1,31 +1,40 @@
 import Tag from '../Tag'
-import sushi from '../../assets/sushi.jpg'
+
 import star from '../../assets/star_favorite-[#1499].png'
 import * as S from './styles'
 import { Link } from 'react-router-dom'
 
 type Props = {
-  name: string
-  description: string
-  stars: number
+  titulo: string
+  descricao: string
+  avaliacao: number
   category?: string
-  infos: string[]
+  tipo: string
+  destacado: boolean
   image: string
 }
 
-const RestaurantCard = ({ name, description, image, infos, stars }: Props) => {
+const RestaurantCard = ({
+  titulo,
+  descricao,
+  image,
+  tipo,
+  destacado,
+  avaliacao
+}: Props) => {
+  const primeiraLetraMaiuscula = tipo.charAt(0).toUpperCase() + tipo.slice(1)
+
   return (
     <S.Card>
       <img src={image} alt="" />
       <S.Infos>
-        {infos.map((infos) => (
-          <Tag key={infos}>{infos}</Tag>
-        ))}
+        {destacado === true && <Tag>Destaque da semana</Tag>}
+        <Tag>{primeiraLetraMaiuscula}</Tag>
       </S.Infos>
       <S.Div>
-        <S.Title>{name}</S.Title>
+        <S.Title>{titulo}</S.Title>
         <S.Stars>
-          {stars}
+          {avaliacao}
           <img src={star} alt="" />
         </S.Stars>
         <Link to={'/perfil'}>
@@ -33,7 +42,7 @@ const RestaurantCard = ({ name, description, image, infos, stars }: Props) => {
             <Tag size="big" type="button"></Tag>
           </S.Button>
         </Link>
-        <p>{description}</p>
+        <p>{descricao}</p>
       </S.Div>
     </S.Card>
   )
