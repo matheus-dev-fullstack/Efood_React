@@ -5,6 +5,7 @@ import * as S from './styles'
 import { Link } from 'react-router-dom'
 
 type Props = {
+  id: number
   titulo: string
   descricao: string
   avaliacao: number
@@ -15,6 +16,7 @@ type Props = {
 }
 
 const RestaurantCard = ({
+  id,
   titulo,
   descricao,
   image,
@@ -22,14 +24,14 @@ const RestaurantCard = ({
   destacado,
   avaliacao
 }: Props) => {
-  const primeiraLetraMaiuscula = tipo.charAt(0).toUpperCase() + tipo.slice(1)
+  const TipoMaiusculo = tipo.charAt(0).toUpperCase() + tipo.slice(1)
 
   return (
-    <S.Card>
+    <S.Card key={id}>
       <img src={image} alt="" />
       <S.Infos>
         {destacado === true && <Tag>Destaque da semana</Tag>}
-        <Tag>{primeiraLetraMaiuscula}</Tag>
+        <Tag>{TipoMaiusculo}</Tag>
       </S.Infos>
       <S.Div>
         <S.Title>{titulo}</S.Title>
@@ -37,11 +39,9 @@ const RestaurantCard = ({
           {avaliacao}
           <img src={star} alt="" />
         </S.Stars>
-        <Link to={'/perfil'}>
-          <S.Button>
-            <Tag size="big" type="button"></Tag>
-          </S.Button>
-        </Link>
+        <S.Button to={`/perfil/${id}`}>
+          <Tag size="big" type="button"></Tag>
+        </S.Button>
         <p>{descricao}</p>
       </S.Div>
     </S.Card>

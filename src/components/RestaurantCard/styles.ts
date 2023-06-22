@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
 import { TagContainer } from '../Tag/styles'
+import { Link } from 'react-router-dom'
 
 export const Card = styled.div`
   display: flex;
@@ -64,7 +65,7 @@ export const Infos = styled.div`
     margin-right: 8px;
   }
 `
-export const Button = styled.button`
+export const Button = styled(Link)`
   border: none;
   cursor: pointer;
   position: absolute;

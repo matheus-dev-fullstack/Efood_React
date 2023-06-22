@@ -7,6 +7,7 @@ export const Imagem = styled.div`
   display: block;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   font-weight: bold;
 `
 export const Div = styled.div`
@@ -30,7 +31,7 @@ export const TipoCardapio = styled.span`
   font-family: Roboto;
   color: ${cores.branco};
 `
-export const NomePrato = styled.h3`
+export const NomeRestaurant = styled.h3`
   position: absolute;
   bottom: 32px;
   font-weight: 900;

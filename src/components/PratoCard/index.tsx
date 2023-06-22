@@ -4,20 +4,29 @@ import Tag from '../Tag'
 import * as S from './styles'
 
 type Props = {
-  name: string
-  description: string
-  image: string
+  nome: string
+  descricao: string
+  foto: string
+  onButtonClick: () => void
 }
 
-const PratoCard = ({ name, description, image }: Props) => (
-  <S.Card>
-    <img src={image} alt="" />
-    <S.Infos>
-      <S.Name>{name}</S.Name>
-      <S.Description>{description}</S.Description>
-      <S.Button>Adicionar ao Carrinho</S.Button>
-    </S.Infos>
-  </S.Card>
-)
+const PratoCard = ({ nome, descricao, foto, onButtonClick }: Props) => {
+  const getDescricao = (descricao: string) => {
+    if (descricao.length > 180) {
+      return descricao.slice(0, 179) + '...'
+    }
+    return descricao
+  }
 
+  return (
+    <S.Card>
+      <img src={foto} alt="" />
+      <S.Infos>
+        <S.Name>{nome}</S.Name>
+        <S.Description>{getDescricao(descricao)}</S.Description>
+        <S.Button onClick={onButtonClick}>Adicionar ao Carrinho</S.Button>
+      </S.Infos>
+    </S.Card>
+  )
+}
 export default PratoCard

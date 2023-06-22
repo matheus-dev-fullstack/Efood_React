@@ -13,6 +13,7 @@ const RestautantList = ({ places }: Props) => (
         {places.map((place) => (
           <S.Item key={place.id}>
             <RestaurantCard
+              id={place.id}
               titulo={place.titulo}
               descricao={place.descricao}
               avaliacao={place.avaliacao}

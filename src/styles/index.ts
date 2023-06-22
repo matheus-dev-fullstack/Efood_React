@@ -25,8 +25,6 @@ export const GlobalStyle = createGlobalStyle`
       padding: 0 auto;
       max-width: 1024px
       margin: auto;
-      // padding-left: 15%;
-      // padding-right: 15%;
     }
 `
 export const MainContainer = styled.div`
