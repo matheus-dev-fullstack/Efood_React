@@ -2,6 +2,7 @@ import RestaurantList from '../../components/RestaurantList'
 import Header from '../../components/Header'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useGetRestaurantsQuery } from '../../services/api'
 
 export type CardapioItem = {
   id: number
@@ -20,28 +21,21 @@ export type Restaurant = {
   avaliacao: number
   descricao: string
   capa: string
-
-  cardapio: CardapioItem
+  cardapio: CardapioItem[]
 }
 
 const Home = () => {
-  const [restaurantes, setRestaurantes] = useState<Restaurant[]>([])
+  const { data: Restaurants } = useGetRestaurantsQuery()
 
-  useEffect(() => {
-    axios
-      .get('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-      // .then((res) => res.json())
-      .then((res) => {
-        setRestaurantes(res.data)
-      })
-  }, [])
-
-  return (
-    <>
-      <Header />
-      <RestaurantList places={restaurantes} />
-    </>
-  )
+  if (Restaurants) {
+    return (
+      <>
+        <Header />
+        <RestaurantList places={Restaurants} />
+      </>
+    )
+  }
+  return <h4>Carregando</h4>
 }
 
 export default Home

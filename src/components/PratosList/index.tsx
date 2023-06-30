@@ -5,7 +5,7 @@ import * as S from './styles'
 import { useState } from 'react'
 
 export type Props = {
-  cardapio: CardapioItem[]
+  cardapio: Restaurant
 }
 
 interface ModalState {
@@ -49,15 +49,11 @@ const PratosList = ({ cardapio }: Props) => {
     })
   }
 
-  if (!Array.isArray(cardapio)) {
-    return <h3>Erro: cardapio não é um array válido</h3>
-  }
-
   return (
     <S.Container>
       <div>
         <S.List>
-          {cardapio.map((item) => (
+          {cardapio.cardapio.map((item) => (
             <li key={item.id}>
               <PratoCard
                 nome={item.nome}
@@ -83,7 +79,6 @@ const PratosList = ({ cardapio }: Props) => {
           <S.Close
             onClick={() => {
               closeModal()
-              // alert('Close')
             }}
             src={Fechar}
             alt=""
@@ -100,3 +95,8 @@ const PratosList = ({ cardapio }: Props) => {
   )
 }
 export default PratosList
+
+// if (!Array.isArray(cardapio)) {
+//   console.log('Erro de tipagem', cardapio)
+//   return <h3>Erro: cardapio não é um array válido</h3>
+// }
