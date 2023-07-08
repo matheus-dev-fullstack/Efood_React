@@ -3,6 +3,10 @@ import PratoCard from '../PratoCard'
 import Fechar from '../../assets/close.png'
 import * as S from './styles'
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
+import { add, open } from '../../store/reducers/cart'
+import { Item } from '../RestaurantList/styles'
 
 export type Props = {
   cardapio: Restaurant
@@ -18,6 +22,11 @@ interface ModalState {
 }
 
 const PratosList = ({ cardapio }: Props) => {
+  const dispatch = useDispatch()
+
+  const addToCart = () => {
+    dispatch(open())
+  }
   const [modal, setModal] = useState<ModalState>({
     isVisible: false,
     nome: '',
@@ -74,7 +83,9 @@ const PratosList = ({ cardapio }: Props) => {
             <h3>{modal.nome}</h3>
             <p>{modal.descricao}</p>
             <span>Serve: de {modal.serve}</span>
-            <S.Button>Adicionar ao carrinho - R$ {modal.preco}</S.Button>
+            <S.Button onClick={addToCart}>
+              Adicionar ao carrinho - R$ {modal.preco}
+            </S.Button>
           </S.Infos>
           <S.Close
             onClick={() => {
@@ -95,8 +106,3 @@ const PratosList = ({ cardapio }: Props) => {
   )
 }
 export default PratosList
-
-// if (!Array.isArray(cardapio)) {
-//   console.log('Erro de tipagem', cardapio)
-//   return <h3>Erro: cardapio não é um array válido</h3>
-// }

@@ -8,6 +8,7 @@ import {
   useGetRestaurantsByIdQuery
 } from '../../services/api'
 import { CardapioItem } from '../Home'
+import Cart from '../../components/Cart'
 
 interface PratosListData {
   cardapio: CardapioItem[]

@@ -3,6 +3,7 @@ import Header from '../../components/Header'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useGetRestaurantsQuery } from '../../services/api'
+import Cart from '../../components/Cart'
 
 export type CardapioItem = {
   id: number
@@ -30,6 +31,7 @@ const Home = () => {
   if (Restaurants) {
     return (
       <>
+        <Cart />
         <Header />
         <RestaurantList places={Restaurants} />
       </>
