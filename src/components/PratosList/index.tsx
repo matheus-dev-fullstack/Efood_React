@@ -12,7 +12,7 @@ export type Props = {
   cardapio: Restaurant
 }
 
-interface ModalState {
+export interface ModalState {
   isVisible: boolean
   nome: string
   descricao: string
