@@ -12,48 +12,49 @@ export type Props = {
   cardapio: Restaurant
 }
 
-export interface ModalState {
+export interface ModalState extends CardapioItem {
   isVisible: boolean
-  nome: string
-  descricao: string
-  foto: string
-  serve: string
-  preco: number
 }
 
 const PratosList = ({ cardapio }: Props) => {
   const dispatch = useDispatch()
 
-  const addToCart = () => {
+  const addToCart = (item: CardapioItem) => {
     dispatch(open())
+    dispatch(add(item))
+    closeModal()
   }
+
   const [modal, setModal] = useState<ModalState>({
+    id: 0,
     isVisible: false,
     nome: '',
     descricao: '',
     foto: '',
-    serve: '',
+    porcao: '',
     preco: 0
   })
 
   const closeModal = () => {
     setModal({
+      id: 0,
       isVisible: false,
       nome: '',
       descricao: '',
       foto: '',
-      serve: '',
+      porcao: '',
       preco: 0
     })
   }
 
   const openModal = (item: CardapioItem) => {
     setModal({
+      id: item.id,
       isVisible: true,
       nome: item.nome,
       descricao: item.descricao,
       foto: item.foto,
-      serve: item.porcao,
+      porcao: item.porcao,
       preco: item.preco
     })
   }
@@ -65,6 +66,7 @@ const PratosList = ({ cardapio }: Props) => {
           {cardapio.cardapio.map((item) => (
             <li key={item.id}>
               <PratoCard
+                id={item.id}
                 nome={item.nome}
                 descricao={item.descricao}
                 foto={item.foto}
@@ -82,8 +84,12 @@ const PratosList = ({ cardapio }: Props) => {
           <S.Infos>
             <h3>{modal.nome}</h3>
             <p>{modal.descricao}</p>
-            <span>Serve: de {modal.serve}</span>
-            <S.Button onClick={addToCart}>
+            <span>Serve: de {modal.porcao}</span>
+            <S.Button
+              onClick={() => {
+                addToCart(modal)
+              }}
+            >
               Adicionar ao carrinho - R$ {modal.preco}
             </S.Button>
           </S.Infos>

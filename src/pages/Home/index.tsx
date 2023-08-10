@@ -31,7 +31,6 @@ const Home = () => {
   if (Restaurants) {
     return (
       <>
-        <Cart />
         <Header />
         <RestaurantList places={Restaurants} />
       </>

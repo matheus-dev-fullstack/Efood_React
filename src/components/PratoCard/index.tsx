@@ -4,13 +4,14 @@ import Tag from '../Tag'
 import * as S from './styles'
 
 type Props = {
+  id: number
   nome: string
   descricao: string
   foto: string
   onButtonClick: () => void
 }
 
-const PratoCard = ({ nome, descricao, foto, onButtonClick }: Props) => {
+const PratoCard = ({ id, nome, descricao, foto, onButtonClick }: Props) => {
   const getDescricao = (descricao: string) => {
     if (descricao.length > 180) {
       return descricao.slice(0, 179) + '...'
@@ -19,7 +20,7 @@ const PratoCard = ({ nome, descricao, foto, onButtonClick }: Props) => {
   }
 
   return (
-    <S.Card>
+    <S.Card key={id}>
       <img src={foto} alt="" />
       <S.Infos>
         <S.Name>{nome}</S.Name>

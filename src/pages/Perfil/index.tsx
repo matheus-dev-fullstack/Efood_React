@@ -27,6 +27,7 @@ const Perfil = () => {
 
     return (
       <>
+        <Cart />
         <HeaderPerfil />
         <Hero restaurant={heroRestaurant} />
         <PratosList cardapio={restaurantes} />
