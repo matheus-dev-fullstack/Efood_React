@@ -33,6 +33,9 @@ const cartSlice = createSlice({
     close: (state) => {
       state.isOpen = false
     }
+    // count: (state) => {
+    //   return state.items.length
+    // }
   }
 })
 

@@ -58,6 +58,12 @@ const PratosList = ({ cardapio }: Props) => {
       preco: item.preco
     })
   }
+  const formataPreco = (preco = 0) => {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(preco)
+  }
 
   return (
     <S.Container>
@@ -90,7 +96,7 @@ const PratosList = ({ cardapio }: Props) => {
                 addToCart(modal)
               }}
             >
-              Adicionar ao carrinho - R$ {modal.preco}
+              Adicionar ao carrinho - {formataPreco(modal.preco)}
             </S.Button>
           </S.Infos>
           <S.Close

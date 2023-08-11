@@ -12,6 +12,7 @@ import {
 import { RootReducer } from '../../store'
 import { useDispatch, useSelector } from 'react-redux'
 import { remove, close } from '../../store/reducers/cart'
+import formataPreco from '../PratosList'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
@@ -32,6 +33,13 @@ const Cart = () => {
     }, 0)
   }
 
+  const formataPreco = (preco = 0) => {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(preco)
+  }
+
   return (
     <CartContainer className={isOpen ? 'is-open' : ''}>
       <Overlay onClick={closeCart} />
@@ -42,15 +50,15 @@ const Cart = () => {
               <img src={item.foto} alt="" />
               <div>
                 <h3>{item.nome}</h3>
-                <p>R$ {item.preco}</p>
+                <p>R$ {formataPreco(item.preco)}</p>
               </div>
-              <button onClick={closeCart} type="button" />
+              <button onClick={() => removeItem(item.id)} type="button" />
             </CartItem>
           ))}
         </ul>
         <ValorTotal>
           <span>Valor total</span>
-          <span>R$ 35,00</span>
+          <span>{formataPreco(getTotalPrice())}</span>
         </ValorTotal>
         <CartButton type="button">Continuar com a entrega</CartButton>
       </Sidebar>
