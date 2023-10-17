@@ -40,6 +40,7 @@ export const CartItem = styled.li`
   background-color: ${cores.bege};
   padding: 8px;
   margin-bottom: 16px;
+  border-radius: 3px;
   color: ${cores.corTexto};
   position: relative;
 
@@ -48,6 +49,7 @@ export const CartItem = styled.li`
     height: 80px;
     width: 80px;
     margin-right: 8px;
+    border-radius: 3px;
   }
 
   h3 {
@@ -86,4 +88,5 @@ export const ValorTotal = styled.div`
 export const CartButton = styled(Button)`
   background-color: ${cores.bege};
   position: unset;
+  border-radius: 2px;
 `
