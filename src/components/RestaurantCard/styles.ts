@@ -7,6 +7,7 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  border-radius: 20px;
 
   width: 472px;
   height: 400px;
@@ -15,6 +16,7 @@ export const Card = styled.div`
     display: block;
     width: 100%;
     height: 216px;
+    border-radius: 3px 3px 0 0;
     object-fit: cover;
   }
 `
@@ -25,6 +27,7 @@ export const Div = styled.div`
   position: relative;
   border: solid #e66767;
   border-width: 0px 1px 1px 1px;
+  border-radius: 0 0 4px 4px;
 
   p {
     color: ${cores.corTexto};

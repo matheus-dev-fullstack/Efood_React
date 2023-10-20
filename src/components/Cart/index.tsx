@@ -12,7 +12,6 @@ import {
 import { RootReducer } from '../../store'
 import { useDispatch, useSelector } from 'react-redux'
 import { remove, close } from '../../store/reducers/cart'
-import formataPreco from '../PratosList'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
@@ -61,6 +60,9 @@ const Cart = () => {
           <span>{formataPreco(getTotalPrice())}</span>
         </ValorTotal>
         <CartButton type="button">Continuar com a entrega</CartButton>
+      </Sidebar>
+      <Sidebar>
+        <form action="Post"></form>
       </Sidebar>
     </CartContainer>
   )

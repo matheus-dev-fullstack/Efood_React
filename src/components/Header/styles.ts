@@ -17,6 +17,7 @@ export const Logo = styled.img`
   height: 57.5px;
   // left: 621px;
   top: 40px;
+  border-radius: 2px;
 `
 
 export const Titulo = styled.h1`

@@ -40,4 +40,5 @@ export const Button = styled.button`
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
+  border-radius: 2px;
 `
