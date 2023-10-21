@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useGetRestaurantsQuery } from '../../services/api'
 import Cart from '../../components/Cart'
+import Checkout from '../../components/Checkout'
 
 export type CardapioItem = {
   id: number
@@ -31,6 +32,7 @@ const Home = () => {
   if (Restaurants) {
     return (
       <>
+        <Checkout />
         <Header />
         <RestaurantList places={Restaurants} />
       </>

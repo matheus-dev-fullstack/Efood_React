@@ -61,9 +61,7 @@ const Cart = () => {
         </ValorTotal>
         <CartButton type="button">Continuar com a entrega</CartButton>
       </Sidebar>
-      <Sidebar>
-        <form action="Post"></form>
-      </Sidebar>
+      
     </CartContainer>
   )
 }
