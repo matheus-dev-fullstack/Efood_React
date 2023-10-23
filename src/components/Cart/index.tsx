@@ -12,6 +12,7 @@ import {
 import { RootReducer } from '../../store'
 import { useDispatch, useSelector } from 'react-redux'
 import { remove, close } from '../../store/reducers/cart'
+import Checkout from '../Checkout'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
@@ -40,6 +41,7 @@ const Cart = () => {
   }
 
   return (
+    <>
     <CartContainer className={isOpen ? 'is-open' : ''}>
       <Overlay onClick={closeCart} />
       <Sidebar>
@@ -61,8 +63,9 @@ const Cart = () => {
         </ValorTotal>
         <CartButton type="button">Continuar com a entrega</CartButton>
       </Sidebar>
-      
+      <></>
     </CartContainer>
+    </>
   )
 }
 export default Cart
