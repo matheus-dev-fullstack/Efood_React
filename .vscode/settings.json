@@ -1,11 +1,7 @@
 {
-
   "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "cSpell.words": [
-    "polished",
-    "Restaurant"
-  ]
+  "cSpell.words": ["polished", "Restaurant"]
 }

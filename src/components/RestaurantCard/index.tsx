@@ -1,8 +1,8 @@
-import Tag from '../Tag'
+import Tag from "../Tag"
 
-import star from '../../assets/star_favorite-[#1499].png'
-import * as S from './styles'
-import { Link } from 'react-router-dom'
+import star from "../../assets/star_favorite-[#1499].png"
+import * as S from "./styles"
+import { Link } from "react-router-dom"
 
 type Props = {
   id: number

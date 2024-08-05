@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { CardapioItem, Restaurant } from '../../pages/Home'
-import { ModalState } from '../../components/PratosList'
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { CardapioItem, Restaurant } from "../../pages/Home"
+import { ModalState } from "../../components/PratosList"
 
 type CartState = {
   items: CardapioItem[]
@@ -11,11 +11,11 @@ type CartState = {
 const initialState: CartState = {
   items: [],
   isOpen: false,
-  isCheckoutOpen: false,
+  isCheckoutOpen: false
 }
 
 const cartSlice = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState,
   reducers: {
     add: (state, action: PayloadAction<CardapioItem>) => {
@@ -23,7 +23,7 @@ const cartSlice = createSlice({
       if (!game) {
         state.items.push(action.payload)
       } else {
-        alert('Este prato já está no carrinho')
+        alert("Este prato já está no carrinho")
       }
     },
     remove: (state, action: PayloadAction<number>) => {
@@ -31,26 +31,25 @@ const cartSlice = createSlice({
     },
     open: (state) => {
       state.isOpen = true
-      state.isCheckoutOpen = false;
-
+      state.isCheckoutOpen = false
     },
     close: (state) => {
       state.isOpen = false
     },
 
     openCheckout: (state) => {
-      state.isCheckoutOpen = true;
-      state.isOpen = false;
+      state.isCheckoutOpen = true
+      state.isOpen = false
     },
 
     closeCheckout: (state) => {
-      state.isCheckoutOpen = false;
-    },
-
+      state.isCheckoutOpen = false
+    }
   }
 })
 
 cartSlice.actions.add
 
-export const { add, remove, open, close, openCheckout, closeCheckout } = cartSlice.actions
+export const { add, remove, open, close, openCheckout, closeCheckout } =
+  cartSlice.actions
 export default cartSlice.reducer

@@ -1,6 +1,6 @@
-import { Restaurant } from '../../pages/Home'
-import RestaurantCard from '../RestaurantCard'
-import * as S from './styles'
+import { Restaurant } from "../../pages/Home"
+import RestaurantCard from "../RestaurantCard"
+import * as S from "./styles"
 
 export type Props = {
   places: Restaurant[]

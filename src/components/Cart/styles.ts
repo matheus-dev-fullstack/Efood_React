@@ -1,7 +1,7 @@
-import fechar from '../../assets/lixeira-de-reciclagem 1.png'
-import styled from 'styled-components'
-import { cores } from '../../styles'
-import { Button } from '../PratoCard/styles'
+import fechar from "../../assets/lixeira-de-reciclagem 1.png"
+import styled from "styled-components"
+import { cores } from "../../styles"
+import { Button } from "../PratoCard/styles"
 
 export const Overlay = styled.div`
   position: absolute;

@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import { cores } from '../../styles'
-import backgroundHeader from '../../assets/Vector.png'
+import styled from "styled-components"
+import { cores } from "../../styles"
+import backgroundHeader from "../../assets/Vector.png"
 
 export const Header = styled.header`
   background-image: url(${backgroundHeader});

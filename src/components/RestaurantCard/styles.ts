@@ -1,7 +1,7 @@
-import styled from 'styled-components'
-import { cores } from '../../styles'
-import { TagContainer } from '../Tag/styles'
-import { Link } from 'react-router-dom'
+import styled from "styled-components"
+import { cores } from "../../styles"
+import { TagContainer } from "../Tag/styles"
+import { Link } from "react-router-dom"
 
 export const Card = styled.div`
   display: flex;

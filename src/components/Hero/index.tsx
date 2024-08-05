@@ -1,6 +1,6 @@
-import * as S from './styles'
-import bannerImg from '../../assets/bannerImg.jpg'
-import { Restaurant } from '../../pages/Home'
+import * as S from "./styles"
+import bannerImg from "../../assets/bannerImg.jpg"
+import { Restaurant } from "../../pages/Home"
 
 type Props = {
   restaurant: Restaurant

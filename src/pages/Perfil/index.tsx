@@ -1,15 +1,15 @@
-import HeaderPerfil from '../../components/HeaderPerfil'
-import Hero from '../../components/Hero'
-import PratosList from '../../components/PratosList'
-import { useParams } from 'react-router-dom'
+import HeaderPerfil from "../../components/HeaderPerfil"
+import Hero from "../../components/Hero"
+import PratosList from "../../components/PratosList"
+import { useParams } from "react-router-dom"
 import {
   useGetHeroRestaurantQuery,
   useGetPratosQuery,
   useGetRestaurantsByIdQuery
-} from '../../services/api'
-import { CardapioItem } from '../Home'
-import Cart from '../../components/Cart'
-import Checkout from '../../components/Checkout'
+} from "../../services/api"
+import { CardapioItem } from "../Home"
+import Cart from "../../components/Cart"
+import Checkout from "../../components/Checkout"
 
 interface PratosListData {
   cardapio: CardapioItem[]

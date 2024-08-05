@@ -1,12 +1,12 @@
-import { CardapioItem, Restaurant } from '../../pages/Home'
-import PratoCard from '../PratoCard'
-import Fechar from '../../assets/close.png'
-import * as S from './styles'
-import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootReducer } from '../../store'
-import { add, open } from '../../store/reducers/cart'
-import { Item } from '../RestaurantList/styles'
+import { CardapioItem, Restaurant } from "../../pages/Home"
+import PratoCard from "../PratoCard"
+import Fechar from "../../assets/close.png"
+import * as S from "./styles"
+import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { RootReducer } from "../../store"
+import { add, open } from "../../store/reducers/cart"
+import { Item } from "../RestaurantList/styles"
 
 export type Props = {
   cardapio: Restaurant
@@ -28,10 +28,10 @@ const PratosList = ({ cardapio }: Props) => {
   const [modal, setModal] = useState<ModalState>({
     id: 0,
     isVisible: false,
-    nome: '',
-    descricao: '',
-    foto: '',
-    porcao: '',
+    nome: "",
+    descricao: "",
+    foto: "",
+    porcao: "",
     preco: 0
   })
 
@@ -39,10 +39,10 @@ const PratosList = ({ cardapio }: Props) => {
     setModal({
       id: 0,
       isVisible: false,
-      nome: '',
-      descricao: '',
-      foto: '',
-      porcao: '',
+      nome: "",
+      descricao: "",
+      foto: "",
+      porcao: "",
       preco: 0
     })
   }
@@ -59,9 +59,9 @@ const PratosList = ({ cardapio }: Props) => {
     })
   }
   const formataPreco = (preco = 0) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
+    return new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL"
     }).format(preco)
   }
 
@@ -84,7 +84,7 @@ const PratosList = ({ cardapio }: Props) => {
           ))}
         </S.List>
       </div>
-      <S.Modal className={modal.isVisible ? 'visible' : ''}>
+      <S.Modal className={modal.isVisible ? "visible" : ""}>
         <S.ModalContent>
           <S.ModalImage src={modal.foto} alt="" />
           <S.Infos>

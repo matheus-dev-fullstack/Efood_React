@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import { cores } from '../../styles'
-import backgroundHeader from '../../assets/Vector.png'
+import styled from "styled-components"
+import { cores } from "../../styles"
+import backgroundHeader from "../../assets/Vector.png"
 
 export const Header = styled.header`
   background-image: url(${backgroundHeader});
@@ -29,7 +29,7 @@ export const Titulo = styled.h1`
   // align-itens: center;
 
   color: ${cores.corTexto};
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 900;
   font-size: 36px;

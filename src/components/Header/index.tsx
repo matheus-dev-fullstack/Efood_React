@@ -1,5 +1,5 @@
-import * as S from './styles'
-import logo from '../../assets/logo.png'
+import * as S from "./styles"
+import logo from "../../assets/logo.png"
 
 const Header = () => (
   <S.Header>
