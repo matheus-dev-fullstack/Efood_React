@@ -32,7 +32,7 @@ const Home = () => {
   if (Restaurants) {
     return (
       <>
-        <Checkout />
+        {/* <Checkout /> */}
         <Header />
         <RestaurantList places={Restaurants} />
       </>

@@ -5,11 +5,13 @@ import { ModalState } from '../../components/PratosList'
 type CartState = {
   items: CardapioItem[]
   isOpen: boolean
+  isCheckoutOpen: boolean
 }
 
 const initialState: CartState = {
   items: [],
-  isOpen: false
+  isOpen: false,
+  isCheckoutOpen: false,
 }
 
 const cartSlice = createSlice({
@@ -29,17 +31,26 @@ const cartSlice = createSlice({
     },
     open: (state) => {
       state.isOpen = true
+      state.isCheckoutOpen = false;
+
     },
     close: (state) => {
       state.isOpen = false
-    }
-    // count: (state) => {
-    //   return state.items.length
-    // }
+    },
+
+    openCheckout: (state) => {
+      state.isCheckoutOpen = true;
+      state.isOpen = false;
+    },
+
+    closeCheckout: (state) => {
+      state.isCheckoutOpen = false;
+    },
+
   }
 })
 
 cartSlice.actions.add
 
-export const { add, remove, open, close } = cartSlice.actions
+export const { add, remove, open, close, openCheckout, closeCheckout } = cartSlice.actions
 export default cartSlice.reducer

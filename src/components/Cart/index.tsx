@@ -11,16 +11,20 @@ import {
 } from './styles'
 import { RootReducer } from '../../store'
 import { useDispatch, useSelector } from 'react-redux'
-import { remove, close } from '../../store/reducers/cart'
+import { remove, close, openCheckout } from '../../store/reducers/cart'
 import Checkout from '../Checkout'
 
 const Cart = () => {
-  const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
+  const { isOpen, items, isCheckoutOpen } = useSelector((state: RootReducer) => state.cart)
 
   const dispatch = useDispatch()
 
   const closeCart = () => {
     dispatch(close())
+  }
+
+  const goToCheckout = () => {
+    dispatch(openCheckout())
   }
 
   const removeItem = (id: number) => {
@@ -61,7 +65,7 @@ const Cart = () => {
           <span>Valor total</span>
           <span>{formataPreco(getTotalPrice())}</span>
         </ValorTotal>
-        <CartButton type="button">Continuar com a entrega</CartButton>
+        <CartButton type="button" onClick={goToCheckout}>Continuar com a entrega</CartButton>
       </Sidebar>
       <></>
     </CartContainer>
