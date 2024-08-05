@@ -1,6 +1,6 @@
-import Tag from "../Tag"
-import fechar from "../../assets/close.png"
-import pizza from "../../assets/pizza.jpg"
+import Tag from '../Tag';
+import fechar from '../../assets/close.png';
+import pizza from '../../assets/pizza.jpg';
 import {
   Overlay,
   CartContainer,
@@ -8,47 +8,47 @@ import {
   CartItem,
   ValorTotal,
   CartButton
-} from "./styles"
-import { RootReducer } from "../../store"
-import { useDispatch, useSelector } from "react-redux"
-import { remove, close, openCheckout } from "../../store/reducers/cart"
-import Checkout from "../Checkout"
+} from './styles';
+import { RootReducer } from '../../store';
+import { useDispatch, useSelector } from 'react-redux';
+import { remove, close, openCheckout } from '../../store/reducers/cart';
+import Checkout from '../Checkout';
 
 const Cart = () => {
   const { isOpen, items, isCheckoutOpen } = useSelector(
     (state: RootReducer) => state.cart
-  )
+  );
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const closeCart = () => {
-    dispatch(close())
-  }
+    dispatch(close());
+  };
 
   const goToCheckout = () => {
-    dispatch(openCheckout())
-  }
+    dispatch(openCheckout());
+  };
 
   const removeItem = (id: number) => {
-    dispatch(remove(id))
-  }
+    dispatch(remove(id));
+  };
 
   const getTotalPrice = () => {
     return items.reduce((acumulador, valorAtual) => {
-      return (acumulador += valorAtual.preco)
-    }, 0)
-  }
+      return (acumulador += valorAtual.preco);
+    }, 0);
+  };
 
   const formataPreco = (preco = 0) => {
-    return new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL"
-    }).format(preco)
-  }
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(preco);
+  };
 
   return (
     <>
-      <CartContainer className={isOpen ? "is-open" : ""}>
+      <CartContainer className={isOpen ? 'is-open' : ''}>
         <Overlay onClick={closeCart} />
         <Sidebar>
           <ul>
@@ -74,6 +74,6 @@ const Cart = () => {
         <></>
       </CartContainer>
     </>
-  )
-}
-export default Cart
+  );
+};
+export default Cart;

@@ -1,7 +1,7 @@
-import fechar from "../../assets/lixeira-de-reciclagem 1.png"
-import styled from "styled-components"
-import { cores } from "../../styles"
-import { Button } from "../PratoCard/styles"
+import fechar from '../../assets/lixeira-de-reciclagem 1.png';
+import styled from 'styled-components';
+import { cores } from '../../styles';
+import { Button } from '../PratoCard/styles';
 
 export const Overlay = styled.div`
   position: absolute;
@@ -11,7 +11,7 @@ export const Overlay = styled.div`
   height: 100%;
   background-color: #000;
   opacity: 0.8;
-`
+`;
 export const CartContainer = styled.div`
   position: fixed;
   top: 0;
@@ -25,7 +25,7 @@ export const CartContainer = styled.div`
   &.is-open {
     display: flex;
   }
-`
+`;
 export const Sidebar = styled.aside`
   background-color: ${cores.corTexto}};
   z-index: 1;
@@ -34,7 +34,7 @@ export const Sidebar = styled.aside`
   width: 100%;
   display: flex;
   flex-direction: column;
-`
+`;
 export const CartItem = styled.li`
   display: flex;
   background-color: ${cores.bege};
@@ -73,7 +73,7 @@ export const CartItem = styled.li`
     top: 8px;
     cursor: pointer;
   }
-`
+`;
 
 export const ValorTotal = styled.div`
   display: flex;
@@ -84,9 +84,9 @@ export const ValorTotal = styled.div`
   font-size: 14px;
   font-weight: 700;
   color: ${cores.bege};
-`
+`;
 export const CartButton = styled(Button)`
   background-color: ${cores.bege};
   position: unset;
   border-radius: 2px;
-`
+`;

@@ -1,51 +1,51 @@
-import { CardapioItem, Restaurant } from "../../pages/Home"
-import PratoCard from "../PratoCard"
-import Fechar from "../../assets/close.png"
-import * as S from "./styles"
-import { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { RootReducer } from "../../store"
-import { add, open } from "../../store/reducers/cart"
-import { Item } from "../RestaurantList/styles"
+import { CardapioItem, Restaurant } from '../../pages/Home';
+import PratoCard from '../PratoCard';
+import Fechar from '../../assets/close.png';
+import * as S from './styles';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootReducer } from '../../store';
+import { add, open } from '../../store/reducers/cart';
+import { Item } from '../RestaurantList/styles';
 
 export type Props = {
-  cardapio: Restaurant
-}
+  cardapio: Restaurant;
+};
 
 export interface ModalState extends CardapioItem {
-  isVisible: boolean
+  isVisible: boolean;
 }
 
 const PratosList = ({ cardapio }: Props) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const addToCart = (item: CardapioItem) => {
-    dispatch(open())
-    dispatch(add(item))
-    closeModal()
-  }
+    dispatch(open());
+    dispatch(add(item));
+    closeModal();
+  };
 
   const [modal, setModal] = useState<ModalState>({
     id: 0,
     isVisible: false,
-    nome: "",
-    descricao: "",
-    foto: "",
-    porcao: "",
+    nome: '',
+    descricao: '',
+    foto: '',
+    porcao: '',
     preco: 0
-  })
+  });
 
   const closeModal = () => {
     setModal({
       id: 0,
       isVisible: false,
-      nome: "",
-      descricao: "",
-      foto: "",
-      porcao: "",
+      nome: '',
+      descricao: '',
+      foto: '',
+      porcao: '',
       preco: 0
-    })
-  }
+    });
+  };
 
   const openModal = (item: CardapioItem) => {
     setModal({
@@ -56,14 +56,14 @@ const PratosList = ({ cardapio }: Props) => {
       foto: item.foto,
       porcao: item.porcao,
       preco: item.preco
-    })
-  }
+    });
+  };
   const formataPreco = (preco = 0) => {
-    return new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL"
-    }).format(preco)
-  }
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(preco);
+  };
 
   return (
     <S.Container>
@@ -77,14 +77,14 @@ const PratosList = ({ cardapio }: Props) => {
                 descricao={item.descricao}
                 foto={item.foto}
                 onButtonClick={() => {
-                  openModal(item)
+                  openModal(item);
                 }}
               />
             </li>
           ))}
         </S.List>
       </div>
-      <S.Modal className={modal.isVisible ? "visible" : ""}>
+      <S.Modal className={modal.isVisible ? 'visible' : ''}>
         <S.ModalContent>
           <S.ModalImage src={modal.foto} alt="" />
           <S.Infos>
@@ -93,7 +93,7 @@ const PratosList = ({ cardapio }: Props) => {
             <span>Serve: de {modal.porcao}</span>
             <S.Button
               onClick={() => {
-                addToCart(modal)
+                addToCart(modal);
               }}
             >
               Adicionar ao carrinho - {formataPreco(modal.preco)}
@@ -101,7 +101,7 @@ const PratosList = ({ cardapio }: Props) => {
           </S.Infos>
           <S.Close
             onClick={() => {
-              closeModal()
+              closeModal();
             }}
             src={Fechar}
             alt=""
@@ -110,11 +110,11 @@ const PratosList = ({ cardapio }: Props) => {
         <div
           className="overlay"
           onClick={() => {
-            closeModal()
+            closeModal();
           }}
         ></div>
       </S.Modal>
     </S.Container>
-  )
-}
-export default PratosList
+  );
+};
+export default PratosList;

@@ -1,7 +1,7 @@
-import styled from "styled-components"
-import { cores } from "../../styles"
-import { TagContainer } from "../Tag/styles"
-import { Link } from "react-router-dom"
+import styled from 'styled-components';
+import { cores } from '../../styles';
+import { TagContainer } from '../Tag/styles';
+import { Link } from 'react-router-dom';
 
 export const Card = styled.div`
   display: flex;
@@ -19,7 +19,7 @@ export const Card = styled.div`
     border-radius: 3px 3px 0 0;
     object-fit: cover;
   }
-`
+`;
 export const Div = styled.div`
   background-color: ${cores.branco};
   padding: 8px;
@@ -33,12 +33,12 @@ export const Div = styled.div`
     color: ${cores.corTexto};
     font-size: 14px;
   }
-`
+`;
 export const Title = styled.h3`
   color: ${cores.corTexto};
   margin-bottom: 16px;
   font-size: 18px;
-`
+`;
 export const Stars = styled.span`
   display: flex;
   align-items: center;
@@ -58,7 +58,7 @@ export const Stars = styled.span`
     height: 20px;
     width: 21px;
   }
-`
+`;
 export const Infos = styled.div`
   position: absolute;
   top: 16px;
@@ -67,10 +67,10 @@ export const Infos = styled.div`
   ${TagContainer} {
     margin-right: 8px;
   }
-`
+`;
 export const Button = styled(Link)`
   border: none;
   cursor: pointer;
   position: absolute;
   bottom: 8px;
-`
+`;

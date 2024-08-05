@@ -1,30 +1,30 @@
-import HeaderPerfil from "../../components/HeaderPerfil"
-import Hero from "../../components/Hero"
-import PratosList from "../../components/PratosList"
-import { useParams } from "react-router-dom"
+import HeaderPerfil from '../../components/HeaderPerfil';
+import Hero from '../../components/Hero';
+import PratosList from '../../components/PratosList';
+import { useParams } from 'react-router-dom';
 import {
   useGetHeroRestaurantQuery,
   useGetPratosQuery,
   useGetRestaurantsByIdQuery
-} from "../../services/api"
-import { CardapioItem } from "../Home"
-import Cart from "../../components/Cart"
-import Checkout from "../../components/Checkout"
+} from '../../services/api';
+import { CardapioItem } from '../Home';
+import Cart from '../../components/Cart';
+import Checkout from '../../components/Checkout';
 
 interface PratosListData {
-  cardapio: CardapioItem[]
+  cardapio: CardapioItem[];
 }
 
 const Perfil = () => {
-  const { id } = useParams()
+  const { id } = useParams();
 
-  const { data: heroRestaurant } = useGetHeroRestaurantQuery(Number(id))
-  const { data: restaurantes } = useGetRestaurantsByIdQuery(Number(id))
+  const { data: heroRestaurant } = useGetHeroRestaurantQuery(Number(id));
+  const { data: restaurantes } = useGetRestaurantsByIdQuery(Number(id));
 
   if (heroRestaurant && restaurantes) {
     const pratosListData: PratosListData = {
       cardapio: restaurantes.cardapio
-    }
+    };
 
     return (
       <>
@@ -34,12 +34,12 @@ const Perfil = () => {
         <Hero restaurant={heroRestaurant} />
         <PratosList cardapio={restaurantes} />
       </>
-    )
+    );
   }
-  return <h3>Carregando...</h3>
-}
+  return <h3>Carregando...</h3>;
+};
 
-export default Perfil
+export default Perfil;
 
 // if (!pratos) {
 //   return <h3>Carregando...</h3>

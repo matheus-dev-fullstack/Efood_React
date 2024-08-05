@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { cores } from "../../styles"
+import styled from 'styled-components';
+import { cores } from '../../styles';
 
 export const Card = styled.div`
   background-color: ${cores.corTexto};
@@ -13,20 +13,20 @@ export const Card = styled.div`
     height: 168px;
     object-fit: cover;
   }
-`
-export const Infos = styled.div``
+`;
+export const Infos = styled.div``;
 export const Name = styled.h3`
   color: ${cores.bege};
   margin-bottom: 8px;
   margin-top: 8px;
   font-size: 16px;
   font-weight: 900;
-`
+`;
 export const Description = styled.p`
   color: ${cores.bege};
   font-size: 14px;
   font-weight: 400;
-`
+`;
 
 export const Button = styled.button`
   background-color: ${cores.bege};
@@ -41,4 +41,4 @@ export const Button = styled.button`
   font-weight: 700;
   cursor: pointer;
   border-radius: 2px;
-`
+`;

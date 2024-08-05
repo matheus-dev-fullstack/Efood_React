@@ -1,17 +1,17 @@
-import * as S from "./styles"
-import bannerImg from "../../assets/bannerImg.jpg"
-import { Restaurant } from "../../pages/Home"
+import * as S from './styles';
+import bannerImg from '../../assets/bannerImg.jpg';
+import { Restaurant } from '../../pages/Home';
 
 type Props = {
-  restaurant: Restaurant
-}
+  restaurant: Restaurant;
+};
 
 const Hero = ({ restaurant }: Props) => {
   const TipoMaiusculo =
-    restaurant.tipo.charAt(0).toUpperCase() + restaurant.tipo.slice(1)
+    restaurant.tipo.charAt(0).toUpperCase() + restaurant.tipo.slice(1);
 
   if (!restaurant) {
-    return <h3>Valor null</h3>
+    return <h3>Valor null</h3>;
   }
   return (
     <S.Imagem style={{ backgroundImage: `url(${restaurant.capa})` }}>
@@ -22,6 +22,6 @@ const Hero = ({ restaurant }: Props) => {
         </S.Text>
       </S.Div>
     </S.Imagem>
-  )
-}
-export default Hero
+  );
+};
+export default Hero;

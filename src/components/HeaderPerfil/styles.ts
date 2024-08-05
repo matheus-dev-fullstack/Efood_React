@@ -1,10 +1,10 @@
-import styled from "styled-components"
-import { cores } from "../../styles"
-import backgroundHeader from "../../assets/Vector.png"
+import styled from 'styled-components';
+import { cores } from '../../styles';
+import backgroundHeader from '../../assets/Vector.png';
 
 export const Header = styled.header`
   background-image: url(${backgroundHeader});
-`
+`;
 export const Div = styled.div`
   display: flex;
   align-items: center;
@@ -14,7 +14,7 @@ export const Div = styled.div`
   max-width: 1024px;
   color: ${cores.corTexto};
   position: relative;
-`
+`;
 export const Home = styled.a`
   text-decoration: none;
   color: ${cores.corTexto};
@@ -23,7 +23,7 @@ export const Home = styled.a`
   cursor: pointer;
   position: absolute;
   left: 0;
-`
+`;
 export const Logo = styled.img`
   position: absolute;
   top: 0;
@@ -31,7 +31,7 @@ export const Logo = styled.img`
   bottom: 0;
   right: 0;
   margin: auto;
-`
+`;
 
 export const QuantidadeProdutos = styled.span`
   font-family: Roboto;
@@ -42,4 +42,4 @@ export const QuantidadeProdutos = styled.span`
 
   position: absolute;
   right: 0;
-`
+`;
