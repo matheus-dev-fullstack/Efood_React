@@ -15,6 +15,10 @@ const Checkout = () => {
     dispatch(closeCheckout());
   };
 
+  const backToCart = () => {
+    dispatch(closeCheckout());
+  };
+
   return (
     <S.CheckoutContainer className={isCheckoutOpen ? 'is-open' : ''}>
       <S.Overlay onClick={exitCheckout} />
@@ -23,7 +27,7 @@ const Checkout = () => {
         <S.Form action="POST">
           <label htmlFor="">Quem ira receber</label>
           <input type="text" />
-          <label htmlFor="">Endereçp</label>
+          <label htmlFor="">Endereço</label>
           <input type="text" />
           <label htmlFor="">Cidade</label>
           <input type="text" />
@@ -37,12 +41,14 @@ const Checkout = () => {
               <input type="text" />
             </S.Local>
           </S.localization>
-          <label htmlFor="">Complemento(opcional)</label>
+          <label htmlFor="">Complemento (opcional)</label>
           <input type="text" />
-          <div>
-            <button>Continuar com o pagamento</button>
-            <button>Voltar para o carrinho</button>
-          </div>
+          <S.Buttons>
+            <S.CheckoutButton>Continuar com o pagamento</S.CheckoutButton>
+            <S.CheckoutButton onClick={backToCart}>
+              Voltar para o carrinho
+            </S.CheckoutButton>
+          </S.Buttons>
         </S.Form>
       </S.Sidebar>
     </S.CheckoutContainer>

@@ -38,6 +38,20 @@ export const Sidebar = styled.aside`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
+
+  label {
+    color: ${cores.bege};
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  input {
+    background-color: ${cores.bege};
+    border: none;
+    font-weight: 700;
+    padding: 8px;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
 `;
 export const Title = styled.h3`
   font-weight: 900;
@@ -53,5 +67,14 @@ export const localization = styled.div`
 export const Local = styled.div`
   display: flex;
   flex-direction: column;
-  width: 44%;
+  width: 46%;
+`;
+export const Buttons = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 18px;
+`;
+export const CheckoutButton = styled(Button)`
+  position: unset;
+  margin-bottom: 8px;
 `;
