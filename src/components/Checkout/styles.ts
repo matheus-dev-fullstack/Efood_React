@@ -44,7 +44,8 @@ export const Form = styled.form`
     font-weight: 700;
     margin-bottom: 8px;
   }
-  input {
+  input,
+  input:focus {
     background-color: ${cores.bege};
     border: none;
     font-weight: 700;
@@ -54,7 +55,7 @@ export const Form = styled.form`
   }
 `;
 export const Title = styled.h3`
-  font-weight: 900;
+  font-weight: 700;
   font-size: 18px;
   margin-bottom: 16px;
   color: ${cores.bege};
