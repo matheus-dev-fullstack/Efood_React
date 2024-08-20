@@ -6,12 +6,18 @@ type CartState = {
   items: CardapioItem[];
   isOpen: boolean;
   isCheckoutOpen: boolean;
+  isLocationOpen: boolean;
+  isPaymentOpen: boolean;
+  isSuccessMessage: boolean;
 };
 
 const initialState: CartState = {
   items: [],
   isOpen: false,
-  isCheckoutOpen: false
+  isCheckoutOpen: false,
+  isLocationOpen: false,
+  isPaymentOpen: false,
+  isSuccessMessage: false
 };
 
 const cartSlice = createSlice({
@@ -44,12 +50,20 @@ const cartSlice = createSlice({
 
     closeCheckout: (state) => {
       state.isCheckoutOpen = false;
+    },
+
+    openLocation: (state) => {
+      state.isLocationOpen = true;
+      state.isOpen = false;
+    },
+
+    closeLocation: (state) => {
+      state.isCheckoutOpen = false;
     }
   }
 });
 
 cartSlice.actions.add;
 
-export const { add, remove, open, close, openCheckout, closeCheckout } =
-  cartSlice.actions;
+export const { add, remove, open, close, openCheckout, closeCheckout, openLocation, closeLocation } = cartSlice.actions;
 export default cartSlice.reducer;

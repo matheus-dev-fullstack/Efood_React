@@ -11,7 +11,7 @@ import {
 } from './styles';
 import { RootReducer } from '../../store';
 import { useDispatch, useSelector } from 'react-redux';
-import { remove, close, openCheckout } from '../../store/reducers/cart';
+import { remove, close, openCheckout, openLocation } from '../../store/reducers/cart';
 import Checkout from '../Checkout';
 
 const Cart = () => {
@@ -26,7 +26,8 @@ const Cart = () => {
   };
 
   const goToCheckout = () => {
-    dispatch(openCheckout());
+    // dispatch(openCheckout());
+    dispatch(openLocation());
   };
 
   const removeItem = (id: number) => {

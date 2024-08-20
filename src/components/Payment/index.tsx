@@ -5,10 +5,8 @@ import { RootReducer } from '../../store';
 import { closeCheckout, closeLocation } from '../../store/reducers/cart';
 import { useState } from 'react';
 
-// Vou criar esse componente e importar no Cart utilizando algum usaState para verificar
-// ou quando for acionado continuar com a compra display none em Cart e exibe Checkout.
 
-const Checkout = () => {
+const Payment = () => {
   const { isLocationOpen } = useSelector((state: RootReducer) => state.cart);
   const dispatch = useDispatch();
 
@@ -56,4 +54,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export default Payment;
