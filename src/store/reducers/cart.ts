@@ -43,18 +43,13 @@ const cartSlice = createSlice({
       state.isOpen = false;
     },
 
-    openCheckout: (state) => {
-      state.isCheckoutOpen = true;
-      state.isOpen = false;
-    },
-
-    closeCheckout: (state) => {
-      state.isCheckoutOpen = false;
-    },
-
     openLocation: (state) => {
       state.isLocationOpen = true;
       state.isOpen = false;
+    },
+    openPayment: (state) => {
+      state.isPaymentOpen = true;
+      state.isLocationOpen = false;
     },
 
     closeLocation: (state) => {
@@ -65,5 +60,13 @@ const cartSlice = createSlice({
 
 cartSlice.actions.add;
 
-export const { add, remove, open, close, openCheckout, closeCheckout, openLocation, closeLocation } = cartSlice.actions;
+export const {
+  add,
+  remove,
+  open,
+  close,
+  openLocation,
+  openPayment,
+  closeLocation
+} = cartSlice.actions;
 export default cartSlice.reducer;

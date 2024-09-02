@@ -2,9 +2,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import * as S from './styles';
 import { RootReducer } from '../../store';
-import { closeCheckout, closeLocation } from '../../store/reducers/cart';
+import { closeLocation } from '../../store/reducers/cart';
 import { useState } from 'react';
-
 
 const Payment = () => {
   const { isLocationOpen } = useSelector((state: RootReducer) => state.cart);
@@ -15,7 +14,7 @@ const Payment = () => {
   };
 
   const backToCart = () => {
-    dispatch(closeCheckout());
+    // dispatch(closeCheckout());
   };
 
   return (
