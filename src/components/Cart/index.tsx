@@ -4,13 +4,8 @@ import pizza from '../../assets/pizza.jpg';
 import * as S from './styles';
 import { RootReducer } from '../../store';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  remove,
-  close,
-  open,
-  openLocation,
-  openPayment
-} from '../../store/reducers/cart';
+import { remove, close, open } from '../../store/reducers/cart';
+import { useState } from 'react';
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart);
@@ -42,9 +37,15 @@ const Cart = () => {
     dispatch(close());
   };
 
+  const goToCart = () => {
+    dispatch(open());
+    setIsLocationOpen(false);
+  };
+
   const goToCheckout = () => {
     setIsLocationOpen(true);
     setIsPaymentOpen(false);
+    dispatch(close());
   };
 
   const goToPayment = () => {
@@ -52,15 +53,15 @@ const Cart = () => {
     setIsPaymentOpen(true);
   };
 
-  const goToCart = () => {
-    setIsLocationOpen(false);
+  const goToSuccessMessage = () => {
     setIsPaymentOpen(false);
+    setIsSuccessMessage(true);
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log('Formulário submetido');
-    setIsSuccessMessage(true);
+    setIsSuccessMessage(false);
     setIsLocationOpen(false);
     setIsPaymentOpen(false);
   };
@@ -94,6 +95,7 @@ const Cart = () => {
           </S.CartButton>
         </S.Sidebar>
       </S.Container>
+
       <S.Container className={isLocationOpen ? 'is-open' : ''}>
         {/* <Container> */}
         <S.Overlay onClick={closeCart} />
@@ -118,15 +120,15 @@ const Cart = () => {
             </S.localization>
             <label htmlFor="">Complemento (opcional)</label>
             <input type="text" />
-            <S.Buttons>
-              <S.CheckoutButton onClick={goToPayment}>
-                Continuar com o pagamento
-              </S.CheckoutButton>
-              <S.CheckoutButton onClick={goToCart}>
-                Voltar para o carrinho
-              </S.CheckoutButton>
-            </S.Buttons>
           </S.Form>
+          <S.Buttons>
+            <S.CheckoutButton onClick={goToPayment}>
+              Continuar com o pagamento
+            </S.CheckoutButton>
+            <S.CheckoutButton onClick={goToCart}>
+              Voltar para o carrinho
+            </S.CheckoutButton>
+          </S.Buttons>
         </S.Sidebar>
       </S.Container>
 
@@ -135,31 +137,29 @@ const Cart = () => {
         <S.Sidebar>
           <S.Title>Entrega</S.Title>
           <S.Form onSubmit={handleSubmit}>
-            <label htmlFor="">Quem ira receber</label>
+            <label htmlFor="">Nome do cartão</label>
             <input type="text" />
-            <label htmlFor="">Endereço</label>
+            <label htmlFor="">Número do cartão</label>
             <input type="text" />
-            <label htmlFor="">Cidade</label>
+            <label htmlFor="">CVV</label>
             <input type="text" />
             <S.localization>
               <S.Local>
-                <label htmlFor="">CEP</label>
+                <label htmlFor="">Mês de vencimento</label>
                 <input type="text" />
               </S.Local>
               <S.Local>
-                <label htmlFor="">Número</label>
+                <label htmlFor="">Ano de vencimento</label>
                 <input type="text" />
               </S.Local>
             </S.localization>
-            <label htmlFor="">Complemento (opcional)</label>
-            <input type="text" />
-            <S.Buttons>
-              <S.CheckoutButton>Continuar com o pagamento</S.CheckoutButton>
-              <S.CheckoutButton onClick={goToCheckout}>
-                Voltar para o carrinho
-              </S.CheckoutButton>
-            </S.Buttons>
           </S.Form>
+          <S.Buttons>
+            <S.CheckoutButton>Finalizar pagamento</S.CheckoutButton>
+            <S.CheckoutButton onClick={goToCheckout}>
+              Voltar para a edição de endereço
+            </S.CheckoutButton>
+          </S.Buttons>
         </S.Sidebar>
       </S.Container>
     </>

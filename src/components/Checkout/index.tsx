@@ -2,14 +2,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 import * as S from './styles';
 import { RootReducer } from '../../store';
-import { closeLocation, open } from '../../store/reducers/cart';
+import { open } from '../../store/reducers/cart';
 import { useState } from 'react';
 
 // Vou criar esse componente e importar no Cart utilizando algum usaState para verificar
 // ou quando for acionado continuar com a compra display none em Cart e exibe Checkout.
 
 const Checkout = () => {
-  const { isCheckoutOpen } = useSelector((state: RootReducer) => state.cart);
+  // const { isCheckoutOpen } = useSelector((state: RootReducer) => state.cart);
   const dispatch = useDispatch();
 
   const exitCheckout = () => {

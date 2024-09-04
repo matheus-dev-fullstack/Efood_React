@@ -2,15 +2,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 import * as S from './styles';
 import { RootReducer } from '../../store';
-import { closeLocation } from '../../store/reducers/cart';
 import { useState } from 'react';
 
 const Payment = () => {
-  const { isLocationOpen } = useSelector((state: RootReducer) => state.cart);
+  // const { isLocationOpen } = useSelector((state: RootReducer) => state.cart);
   const dispatch = useDispatch();
 
   const exitCheckout = () => {
-    dispatch(closeLocation());
+    // dispatch(closeLocation());
   };
 
   const backToCart = () => {
@@ -18,7 +17,8 @@ const Payment = () => {
   };
 
   return (
-    <S.CheckoutContainer className={isLocationOpen ? 'is-open' : ''}>
+    // <S.CheckoutContainer className={isLocationOpen ? 'is-open' : ''}>
+    <S.CheckoutContainer>
       <S.Overlay onClick={exitCheckout} />
       <S.Sidebar>
         <S.Title>Entrega</S.Title>
