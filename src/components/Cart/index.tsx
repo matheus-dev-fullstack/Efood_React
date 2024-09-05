@@ -35,6 +35,9 @@ const Cart = () => {
 
   const closeCart = () => {
     dispatch(close());
+    setIsSuccessMessage(false);
+    setIsLocationOpen(false);
+    setIsPaymentOpen(false);
   };
 
   const goToCart = () => {
@@ -133,7 +136,7 @@ const Cart = () => {
       </S.Container>
 
       <S.Container className={isPaymentOpen ? 'is-open' : ''}>
-        <S.Overlay onClick={goToCart} />
+        <S.Overlay onClick={closeCart} />
         <S.Sidebar>
           <S.Title>Entrega</S.Title>
           <S.Form onSubmit={handleSubmit}>
@@ -155,7 +158,41 @@ const Cart = () => {
             </S.localization>
           </S.Form>
           <S.Buttons>
-            <S.CheckoutButton>Finalizar pagamento</S.CheckoutButton>
+            <S.CheckoutButton onClick={goToSuccessMessage}>
+              Finalizar pagamento
+            </S.CheckoutButton>
+            <S.CheckoutButton onClick={goToCheckout}>
+              Voltar para a edição de endereço
+            </S.CheckoutButton>
+          </S.Buttons>
+        </S.Sidebar>
+      </S.Container>
+
+      <S.Container className={isSuccessMessage ? 'is-open' : ''}>
+        <S.Overlay onClick={closeCart} />
+        <S.Sidebar>
+          <S.Title>Entrega</S.Title>
+          <p>
+            Estamos felizes em informar que seu pedido já está em processo de
+            preparação e, em breve, será entregue no endereço fornecido.
+          </p>
+          <p>
+            Gostaríamos de ressaltar que nossos entregadores não estão
+            autorizados a realizar cobranças extras.{' '}
+          </p>
+          <p>
+            Lembre-se da importância de higienizar as mãos após o recebimento do
+            pedido, garantindo assim sua segurança e bem-estar durante a
+            refeição.
+          </p>
+          <p>
+            Esperamos que desfrute de uma deliciosa e agradável experiência
+            gastronômica. Bom apetite!
+          </p>
+          <S.Buttons>
+            <S.CheckoutButton onClick={goToSuccessMessage}>
+              Finalizar pagamento
+            </S.CheckoutButton>
             <S.CheckoutButton onClick={goToCheckout}>
               Voltar para a edição de endereço
             </S.CheckoutButton>
