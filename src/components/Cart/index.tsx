@@ -171,24 +171,24 @@ const Cart = () => {
       <S.Container className={isSuccessMessage ? 'is-open' : ''}>
         <S.Overlay onClick={closeCart} />
         <S.Sidebar>
-          <S.Title>Entrega</S.Title>
-          <p>
+          <S.Title>Pedido realizado - ORDER ID</S.Title>
+          <S.FinalMessage>
             Estamos felizes em informar que seu pedido já está em processo de
             preparação e, em breve, será entregue no endereço fornecido.
-          </p>
-          <p>
+          </S.FinalMessage>
+          <S.FinalMessage>
             Gostaríamos de ressaltar que nossos entregadores não estão
             autorizados a realizar cobranças extras.{' '}
-          </p>
-          <p>
+          </S.FinalMessage>
+          <S.FinalMessage>
             Lembre-se da importância de higienizar as mãos após o recebimento do
             pedido, garantindo assim sua segurança e bem-estar durante a
             refeição.
-          </p>
-          <p>
+          </S.FinalMessage>
+          <S.FinalMessage>
             Esperamos que desfrute de uma deliciosa e agradável experiência
             gastronômica. Bom apetite!
-          </p>
+          </S.FinalMessage>
           <S.Buttons>
             <S.CheckoutButton onClick={goToSuccessMessage}>
               Finalizar pagamento

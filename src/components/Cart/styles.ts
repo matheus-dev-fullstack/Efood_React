@@ -151,3 +151,8 @@ export const CheckoutButton = styled(Button)`
   position: unset;
   margin-bottom: 8px;
 `;
+
+export const FinalMessage = styled.p`
+  color: ${cores.bege};
+  margin-bottom: 16px;
+`;
