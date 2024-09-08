@@ -61,6 +61,10 @@ const Cart = () => {
     setIsSuccessMessage(true);
   };
 
+  const conclude = () => {
+    setIsSuccessMessage(false);
+  };
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log('Formulário submetido');
@@ -190,12 +194,7 @@ const Cart = () => {
             gastronômica. Bom apetite!
           </S.FinalMessage>
           <S.Buttons>
-            <S.CheckoutButton onClick={goToSuccessMessage}>
-              Finalizar pagamento
-            </S.CheckoutButton>
-            <S.CheckoutButton onClick={goToCheckout}>
-              Voltar para a edição de endereço
-            </S.CheckoutButton>
+            <S.CheckoutButton onClick={conclude}>Concluir</S.CheckoutButton>
           </S.Buttons>
         </S.Sidebar>
       </S.Container>

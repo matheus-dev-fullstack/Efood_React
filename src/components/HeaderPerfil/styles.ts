@@ -33,10 +33,14 @@ export const Logo = styled.img`
   margin: auto;
 `;
 
-export const QuantidadeProdutos = styled.span`
+export const QuantidadeProdutos = styled.button`
   font-family: Roboto;
   font-size: 18px;
   font-weight: 900;
+
+  color: ${cores.corTexto};
+  background-color: transparent;
+  border: none;
 
   letter-spacing: 0em;
 
