@@ -6,6 +6,8 @@ import { RootReducer } from '../../store';
 import { useDispatch, useSelector } from 'react-redux';
 import { remove, close, open } from '../../store/reducers/cart';
 import { useState } from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart);
@@ -73,6 +75,48 @@ const Cart = () => {
     setIsPaymentOpen(false);
   };
 
+  const form = useFormik({
+    initialValues: {
+      fullName: '',
+      address: '',
+      city: '',
+      cep: '',
+      addressNumber: '',
+      complement: ''
+    },
+    validationSchema: Yup.object({
+      fullName: Yup.string()
+        .min(5, 'O nome precisa ter pelo menos 5 caracteres')
+        .required('O campo é obrigatório'),
+      address: Yup.string()
+        .min(5, 'O nome precisa ter pelo menos 5 caracteres')
+        .required('O campo é obrigatório'),
+      city: Yup.string()
+        .min(5, 'O nome precisa ter pelo menos 5 caracteres')
+        .required('O campo é obrigatório'),
+      cep: Yup.string()
+        .min(5, 'O nome precisa ter pelo menos 5 caracteres')
+        .required('O campo é obrigatório'),
+      addressNumber: Yup.string()
+        .min(5, 'O nome precisa ter pelo menos 5 caracteres')
+        .required('O campo é obrigatório'),
+      complement: Yup.string()
+        .min(5, 'O nome precisa ter pelo menos 5 caracteres')
+        .required('O campo é obrigatório')
+    }),
+
+    onSubmit: (values) => {
+      purchase({
+        fullName: values.fullName,
+        address: values.address,
+        city: values.city,
+        cep: values.cep,
+        addressNumber: values.addressNumber,
+        complement: values.complement
+      });
+    }
+  });
+
   return (
     <>
       <S.Container className={isOpen ? 'is-open' : ''}>
@@ -109,7 +153,7 @@ const Cart = () => {
         <S.Sidebar>
           <S.Title>Entrega</S.Title>
           <S.Form onSubmit={handleSubmit}>
-            <label htmlFor="">Quem ira receber</label>
+            <label htmlFor="">Quem irá receber</label>
             <input type="text" />
             <label htmlFor="">Endereço</label>
             <input type="text" />
@@ -202,3 +246,13 @@ const Cart = () => {
   );
 };
 export default Cart;
+function purchase(arg0: {
+  fullName: string;
+  address: string;
+  city: string;
+  cep: string;
+  addressNumber: string;
+  complement: string;
+}) {
+  throw new Error('Function not implemented.');
+}
