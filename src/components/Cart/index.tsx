@@ -102,18 +102,12 @@ const Cart = () => {
         .required('O campo é obrigatório'),
       complement: Yup.string()
         .min(5, 'O nome precisa ter pelo menos 5 caracteres')
-        .required('O campo é obrigatório')
+        .notRequired()
     }),
 
     onSubmit: (values) => {
-      purchase({
-        fullName: values.fullName,
-        address: values.address,
-        city: values.city,
-        cep: values.cep,
-        addressNumber: values.addressNumber,
-        complement: values.complement
-      });
+      console.log(values);
+      goToPayment();
     }
   });
 
@@ -152,34 +146,92 @@ const Cart = () => {
         <S.Overlay onClick={closeCart} />
         <S.Sidebar>
           <S.Title>Entrega</S.Title>
-          <S.Form onSubmit={handleSubmit}>
-            <label htmlFor="">Quem irá receber</label>
-            <input type="text" />
-            <label htmlFor="">Endereço</label>
-            <input type="text" />
-            <label htmlFor="">Cidade</label>
-            <input type="text" />
+          <S.Form onSubmit={form.handleSubmit}>
+            <label htmlFor="fullName">Quem irá receber</label>
+            <input
+              id="fullName"
+              name="fullName"
+              type="text"
+              onChange={form.handleChange}
+              onBlur={form.handleBlur}
+              value={form.values.fullName}
+            />
+            {form.touched.fullName && form.errors.fullName && (
+              <div>{form.errors.fullName}</div>
+            )}
+
+            <label htmlFor="address">Endereço</label>
+            <input
+              id="address"
+              name="address"
+              type="text"
+              onChange={form.handleChange}
+              onBlur={form.handleBlur}
+              value={form.values.address}
+            />
+            {form.touched.address && form.errors.address && (
+              <div>{form.errors.address}</div>
+            )}
+            <label htmlFor="city">Cidade</label>
+            <input
+              id="city"
+              name="city"
+              type="text"
+              onChange={form.handleChange}
+              onBlur={form.handleBlur}
+              value={form.values.city}
+            />
+            {form.touched.city && form.errors.city && (
+              <div>{form.errors.city}</div>
+            )}
             <S.localization>
               <S.Local>
-                <label htmlFor="">CEP</label>
-                <input type="text" />
+                <label htmlFor="cep">CEP</label>
+                <input
+                  id="cep"
+                  name="cep"
+                  type="text"
+                  onChange={form.handleChange}
+                  onBlur={form.handleBlur}
+                  value={form.values.cep}
+                />
+                {form.touched.cep && form.errors.cep && (
+                  <div>{form.errors.cep}</div>
+                )}
               </S.Local>
               <S.Local>
-                <label htmlFor="">Número</label>
-                <input type="text" />
+                <label htmlFor="addressNumber">Número</label>
+                <input
+                  id="addressNumber"
+                  name="addressNumber"
+                  type="text"
+                  onChange={form.handleChange}
+                  onBlur={form.handleBlur}
+                  value={form.values.addressNumber}
+                />
+                {form.touched.addressNumber && form.errors.addressNumber && (
+                  <div>{form.errors.addressNumber}</div>
+                )}
               </S.Local>
             </S.localization>
-            <label htmlFor="">Complemento (opcional)</label>
-            <input type="text" />
+            <label htmlFor="complement">Complemento (opcional)</label>
+            <input
+              id="complement"
+              name="complement"
+              type="text"
+              onChange={form.handleChange}
+              onBlur={form.handleBlur}
+              value={form.values.complement}
+            />
+            <S.Buttons>
+              <S.CheckoutButton type="submit">
+                Continuar com o pagamento
+              </S.CheckoutButton>
+              <S.CheckoutButton type="button" onClick={goToCart}>
+                Voltar para o carrinho
+              </S.CheckoutButton>
+            </S.Buttons>
           </S.Form>
-          <S.Buttons>
-            <S.CheckoutButton onClick={goToPayment}>
-              Continuar com o pagamento
-            </S.CheckoutButton>
-            <S.CheckoutButton onClick={goToCart}>
-              Voltar para o carrinho
-            </S.CheckoutButton>
-          </S.Buttons>
         </S.Sidebar>
       </S.Container>
 
@@ -246,13 +298,13 @@ const Cart = () => {
   );
 };
 export default Cart;
-function purchase(arg0: {
-  fullName: string;
-  address: string;
-  city: string;
-  cep: string;
-  addressNumber: string;
-  complement: string;
-}) {
-  throw new Error('Function not implemented.');
-}
+// function purchase(values: {
+//   fullName: string;
+//   address: string;
+//   city: string;
+//   cep: string;
+//   addressNumber: string;
+//   complement: string;
+// }) {
+//   console.log('Compra realizada', values);
+// }
