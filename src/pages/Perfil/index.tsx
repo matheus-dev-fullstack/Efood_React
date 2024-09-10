@@ -9,7 +9,6 @@ import {
 } from '../../services/api';
 import { CardapioItem } from '../Home';
 import Cart from '../../components/Cart';
-import Checkout from '../../components/Checkout';
 
 interface PratosListData {
   cardapio: CardapioItem[];

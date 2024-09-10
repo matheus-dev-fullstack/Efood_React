@@ -8,6 +8,7 @@ import { remove, close, open } from '../../store/reducers/cart';
 import { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import FormLocation from '../FormLocation';
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart);
@@ -140,100 +141,14 @@ const Cart = () => {
           </S.CartButton>
         </S.Sidebar>
       </S.Container>
-
-      <S.Container className={isLocationOpen ? 'is-open' : ''}>
-        {/* <Container> */}
-        <S.Overlay onClick={closeCart} />
-        <S.Sidebar>
-          <S.Title>Entrega</S.Title>
-          <S.Form onSubmit={form.handleSubmit}>
-            <label htmlFor="fullName">Quem irá receber</label>
-            <input
-              id="fullName"
-              name="fullName"
-              type="text"
-              onChange={form.handleChange}
-              onBlur={form.handleBlur}
-              value={form.values.fullName}
-            />
-            {form.touched.fullName && form.errors.fullName && (
-              <div>{form.errors.fullName}</div>
-            )}
-
-            <label htmlFor="address">Endereço</label>
-            <input
-              id="address"
-              name="address"
-              type="text"
-              onChange={form.handleChange}
-              onBlur={form.handleBlur}
-              value={form.values.address}
-            />
-            {form.touched.address && form.errors.address && (
-              <div>{form.errors.address}</div>
-            )}
-            <label htmlFor="city">Cidade</label>
-            <input
-              id="city"
-              name="city"
-              type="text"
-              onChange={form.handleChange}
-              onBlur={form.handleBlur}
-              value={form.values.city}
-            />
-            {form.touched.city && form.errors.city && (
-              <div>{form.errors.city}</div>
-            )}
-            <S.localization>
-              <S.Local>
-                <label htmlFor="cep">CEP</label>
-                <input
-                  id="cep"
-                  name="cep"
-                  type="text"
-                  onChange={form.handleChange}
-                  onBlur={form.handleBlur}
-                  value={form.values.cep}
-                />
-                {form.touched.cep && form.errors.cep && (
-                  <div>{form.errors.cep}</div>
-                )}
-              </S.Local>
-              <S.Local>
-                <label htmlFor="addressNumber">Número</label>
-                <input
-                  id="addressNumber"
-                  name="addressNumber"
-                  type="text"
-                  onChange={form.handleChange}
-                  onBlur={form.handleBlur}
-                  value={form.values.addressNumber}
-                />
-                {form.touched.addressNumber && form.errors.addressNumber && (
-                  <div>{form.errors.addressNumber}</div>
-                )}
-              </S.Local>
-            </S.localization>
-            <label htmlFor="complement">Complemento (opcional)</label>
-            <input
-              id="complement"
-              name="complement"
-              type="text"
-              onChange={form.handleChange}
-              onBlur={form.handleBlur}
-              value={form.values.complement}
-            />
-            <S.Buttons>
-              <S.CheckoutButton type="submit">
-                Continuar com o pagamento
-              </S.CheckoutButton>
-              <S.CheckoutButton type="button" onClick={goToCart}>
-                Voltar para o carrinho
-              </S.CheckoutButton>
-            </S.Buttons>
-          </S.Form>
-        </S.Sidebar>
-      </S.Container>
+      {isLocationOpen && (
+        <FormLocation
+          isLocationOpen={isLocationOpen}
+          closeCart={closeCart}
+          goToPayment={goToPayment}
+          goToCart={goToCart}
+        />
+      )}
 
       <S.Container className={isPaymentOpen ? 'is-open' : ''}>
         <S.Overlay onClick={closeCart} />
