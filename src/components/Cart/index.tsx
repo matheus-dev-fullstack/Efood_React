@@ -9,6 +9,8 @@ import { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import FormLocation from '../FormLocation';
+import FormPayment from '../FormPayment';
+import SuccessMessage from '../SuccessMessage';
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart);
@@ -150,65 +152,22 @@ const Cart = () => {
         />
       )}
 
-      <S.Container className={isPaymentOpen ? 'is-open' : ''}>
-        <S.Overlay onClick={closeCart} />
-        <S.Sidebar>
-          <S.Title>Entrega</S.Title>
-          <S.Form onSubmit={handleSubmit}>
-            <label htmlFor="">Nome do cartão</label>
-            <input type="text" />
-            <label htmlFor="">Número do cartão</label>
-            <input type="text" />
-            <label htmlFor="">CVV</label>
-            <input type="text" />
-            <S.localization>
-              <S.Local>
-                <label htmlFor="">Mês de vencimento</label>
-                <input type="text" />
-              </S.Local>
-              <S.Local>
-                <label htmlFor="">Ano de vencimento</label>
-                <input type="text" />
-              </S.Local>
-            </S.localization>
-          </S.Form>
-          <S.Buttons>
-            <S.CheckoutButton onClick={goToSuccessMessage}>
-              Finalizar pagamento
-            </S.CheckoutButton>
-            <S.CheckoutButton onClick={goToCheckout}>
-              Voltar para a edição de endereço
-            </S.CheckoutButton>
-          </S.Buttons>
-        </S.Sidebar>
-      </S.Container>
+      {isPaymentOpen && (
+        <FormPayment
+          isPaymentOpen={isPaymentOpen}
+          closeCart={closeCart}
+          goToSuccessMessage={goToSuccessMessage}
+          goToCheckout={goToCheckout}
+        />
+      )}
 
-      <S.Container className={isSuccessMessage ? 'is-open' : ''}>
-        <S.Overlay onClick={closeCart} />
-        <S.Sidebar>
-          <S.Title>Pedido realizado - ORDER ID</S.Title>
-          <S.FinalMessage>
-            Estamos felizes em informar que seu pedido já está em processo de
-            preparação e, em breve, será entregue no endereço fornecido.
-          </S.FinalMessage>
-          <S.FinalMessage>
-            Gostaríamos de ressaltar que nossos entregadores não estão
-            autorizados a realizar cobranças extras.{' '}
-          </S.FinalMessage>
-          <S.FinalMessage>
-            Lembre-se da importância de higienizar as mãos após o recebimento do
-            pedido, garantindo assim sua segurança e bem-estar durante a
-            refeição.
-          </S.FinalMessage>
-          <S.FinalMessage>
-            Esperamos que desfrute de uma deliciosa e agradável experiência
-            gastronômica. Bom apetite!
-          </S.FinalMessage>
-          <S.Buttons>
-            <S.CheckoutButton onClick={conclude}>Concluir</S.CheckoutButton>
-          </S.Buttons>
-        </S.Sidebar>
-      </S.Container>
+      {isSuccessMessage && (
+        <SuccessMessage
+          isSuccessMessage={isSuccessMessage}
+          conclude={conclude}
+          closeCart={closeCart}
+        />
+      )}
     </>
   );
 };

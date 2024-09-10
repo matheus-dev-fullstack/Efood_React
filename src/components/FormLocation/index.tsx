@@ -150,13 +150,3 @@ const FormLocation: React.FC<FormLocationProps> = ({
   );
 };
 export default FormLocation;
-// function purchase(values: {
-//   fullName: string;
-//   address: string;
-//   city: string;
-//   cep: string;
-//   addressNumber: string;
-//   complement: string;
-// }) {
-//   console.log('Compra realizada', values);
-// }
