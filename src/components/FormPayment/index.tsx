@@ -17,32 +17,28 @@ const FormPayment: React.FC<FormPaymentProps> = ({
 }) => {
   const form = useFormik({
     initialValues: {
-      fullName: '',
-      address: '',
-      city: '',
-      cep: '',
-      addressNumber: '',
-      complement: ''
+      cardName: '',
+      cardNumber: '',
+      cvv: '',
+      cardEndMonth: '',
+      cardEndYear: ''
     },
     validationSchema: Yup.object({
-      fullName: Yup.string()
+      cardName: Yup.string()
         .min(5, 'O nome precisa ter pelo menos 5 caracteres')
         .required('O campo é obrigatório'),
-      address: Yup.string()
+      cardNumber: Yup.string()
         .min(5, 'O nome precisa ter pelo menos 5 caracteres')
         .required('O campo é obrigatório'),
-      city: Yup.string()
+      cvv: Yup.string()
         .min(5, 'O nome precisa ter pelo menos 5 caracteres')
         .required('O campo é obrigatório'),
-      cep: Yup.string()
+      cardEndMonth: Yup.string()
         .min(5, 'O nome precisa ter pelo menos 5 caracteres')
         .required('O campo é obrigatório'),
-      addressNumber: Yup.string()
+      cardEndYear: Yup.string()
         .min(5, 'O nome precisa ter pelo menos 5 caracteres')
-        .required('O campo é obrigatório'),
-      complement: Yup.string()
-        .min(5, 'O nome precisa ter pelo menos 5 caracteres')
-        .notRequired()
+        .required('O campo é obrigatório')
     }),
 
     onSubmit: (values) => {
@@ -58,31 +54,81 @@ const FormPayment: React.FC<FormPaymentProps> = ({
         <S.Sidebar>
           <S.Title>Entrega</S.Title>
           <S.Form onSubmit={form.handleSubmit}>
-            <label htmlFor="">Nome do cartão</label>
-            <input type="text" />
-            <label htmlFor="">Número do cartão</label>
-            <input type="text" />
-            <label htmlFor="">CVV</label>
-            <input type="text" />
+            <label htmlFor="cardName">Nome do cartão</label>
+            <input
+              id="cardName"
+              name="cardName"
+              type="text"
+              onChange={form.handleChange}
+              onBlur={form.handleBlur}
+              value={form.values.cardName}
+            />
+            {form.touched.cardName && form.errors.cardName && (
+              <div>{form.errors.cardName}</div>
+            )}
+            <label htmlFor="cardNumber">Número do cartão</label>
+            <input
+              id="cardNumber"
+              name="cardNumber"
+              type="string"
+              onChange={form.handleChange}
+              onBlur={form.handleBlur}
+              value={form.values.cardNumber}
+            />
+            {form.touched.cardName && form.errors.cardName && (
+              <div>{form.errors.cardName}</div>
+            )}
+            <label htmlFor="cvv">CVV</label>
+            <input
+              id="cvv"
+              name="cvv"
+              type="string"
+              onChange={form.handleChange}
+              onBlur={form.handleBlur}
+              value={form.values.cvv}
+            />
+            {form.touched.cvv && form.errors.cvv && (
+              <div>{form.errors.cvv}</div>
+            )}
             <S.localization>
               <S.Local>
-                <label htmlFor="">Mês de vencimento</label>
-                <input type="text" />
+                <label htmlFor="cardEndMonth">Mês de vencimento</label>
+                <input
+                  id="cardEndMonth"
+                  name="cardEndMonth"
+                  type="string"
+                  onChange={form.handleChange}
+                  onBlur={form.handleBlur}
+                  value={form.values.cardEndMonth}
+                />
+                {form.touched.cardEndMonth && form.errors.cardEndMonth && (
+                  <div>{form.errors.cardEndMonth}</div>
+                )}
               </S.Local>
               <S.Local>
-                <label htmlFor="">Ano de vencimento</label>
-                <input type="text" />
+                <label htmlFor="cardEndYear">Ano de vencimento</label>
+                <input
+                  id="cardEndYear"
+                  name="cardEndYear"
+                  type="string"
+                  onChange={form.handleChange}
+                  onBlur={form.handleBlur}
+                  value={form.values.cardEndYear}
+                />
+                {form.touched.cardEndYear && form.errors.cardEndYear && (
+                  <div>{form.errors.cardEndYear}</div>
+                )}
               </S.Local>
             </S.localization>
+            <S.Buttons>
+              <S.CheckoutButton type="submit">
+                Finalizar pagamento
+              </S.CheckoutButton>
+              <S.CheckoutButton onClick={goToCheckout}>
+                Voltar para a edição de endereço
+              </S.CheckoutButton>
+            </S.Buttons>
           </S.Form>
-          <S.Buttons>
-            <S.CheckoutButton onClick={goToSuccessMessage}>
-              Finalizar pagamento
-            </S.CheckoutButton>
-            <S.CheckoutButton onClick={goToCheckout}>
-              Voltar para a edição de endereço
-            </S.CheckoutButton>
-          </S.Buttons>
         </S.Sidebar>
       </S.Container>
     </>

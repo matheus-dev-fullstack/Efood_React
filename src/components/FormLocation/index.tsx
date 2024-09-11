@@ -57,7 +57,7 @@ const FormLocation: React.FC<FormLocationProps> = ({
         {/* <Container> */}
         <S.Overlay onClick={closeCart} />
         <S.Sidebar>
-          <S.Title>Entregasss</S.Title>
+          <S.Title>Entregas</S.Title>
           <S.Form onSubmit={form.handleSubmit}>
             <label htmlFor="fullName">Quem irá receber</label>
             <input

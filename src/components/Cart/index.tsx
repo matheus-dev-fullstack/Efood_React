@@ -70,14 +70,6 @@ const Cart = () => {
     setIsSuccessMessage(false);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log('Formulário submetido');
-    setIsSuccessMessage(false);
-    setIsLocationOpen(false);
-    setIsPaymentOpen(false);
-  };
-
   const form = useFormik({
     initialValues: {
       fullName: '',
