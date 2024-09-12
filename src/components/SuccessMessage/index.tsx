@@ -3,13 +3,11 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 interface SuccessMessageProps {
-  isSuccessMessage: boolean;
   closeCart: () => void;
   conclude: () => void;
 }
 
 const SuccessMessage: React.FC<SuccessMessageProps> = ({
-  isSuccessMessage,
   closeCart,
   conclude
 }) => {
@@ -51,7 +49,7 @@ const SuccessMessage: React.FC<SuccessMessageProps> = ({
 
   return (
     <>
-      <S.Container className={isSuccessMessage ? 'is-open' : ''}>
+      <S.Container className="is-open">
         <S.Overlay onClick={closeCart} />
         <S.Sidebar>
           <S.Title>Pedido realizado - ORDER ID</S.Title>

@@ -3,14 +3,12 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 interface FormPaymentProps {
-  isPaymentOpen: boolean;
   closeCart: () => void;
   goToSuccessMessage: () => void;
   goToCheckout: () => void;
 }
 
 const FormPayment: React.FC<FormPaymentProps> = ({
-  isPaymentOpen,
   closeCart,
   goToSuccessMessage,
   goToCheckout
@@ -49,7 +47,7 @@ const FormPayment: React.FC<FormPaymentProps> = ({
 
   return (
     <>
-      <S.Container className={isPaymentOpen ? 'is-open' : ''}>
+      <S.Container className="is-open">
         <S.Overlay onClick={closeCart} />
         <S.Sidebar>
           <S.Title>Entrega</S.Title>

@@ -137,7 +137,6 @@ const Cart = () => {
       </S.Container>
       {isLocationOpen && (
         <FormLocation
-          isLocationOpen={isLocationOpen}
           closeCart={closeCart}
           goToPayment={goToPayment}
           goToCart={goToCart}
@@ -146,7 +145,6 @@ const Cart = () => {
 
       {isPaymentOpen && (
         <FormPayment
-          isPaymentOpen={isPaymentOpen}
           closeCart={closeCart}
           goToSuccessMessage={goToSuccessMessage}
           goToCheckout={goToCheckout}
@@ -154,11 +152,7 @@ const Cart = () => {
       )}
 
       {isSuccessMessage && (
-        <SuccessMessage
-          isSuccessMessage={isSuccessMessage}
-          conclude={conclude}
-          closeCart={closeCart}
-        />
+        <SuccessMessage conclude={conclude} closeCart={closeCart} />
       )}
     </>
   );

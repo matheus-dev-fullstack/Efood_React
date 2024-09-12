@@ -3,14 +3,12 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 interface FormLocationProps {
-  isLocationOpen: boolean;
   closeCart: () => void;
   goToPayment: () => void;
   goToCart: () => void;
 }
 
 const FormLocation: React.FC<FormLocationProps> = ({
-  isLocationOpen,
   closeCart,
   goToPayment,
   goToCart
@@ -53,7 +51,7 @@ const FormLocation: React.FC<FormLocationProps> = ({
 
   return (
     <>
-      <S.Container className={isLocationOpen ? 'is-open' : ''}>
+      <S.Container className="is-open">
         {/* <Container> */}
         <S.Overlay onClick={closeCart} />
         <S.Sidebar>
