@@ -28,7 +28,7 @@ const FormLocation: React.FC<FormLocationProps> = ({
         .required('O campo é obrigatório'),
       address: Yup.string()
         .min(5, 'O nome precisa ter pelo menos 5 caracteres')
-        .required('O campo é obrigatório'),
+        .required('Digite seu endereço'),
       city: Yup.string()
         .min(5, 'O nome precisa ter pelo menos 5 caracteres')
         .required('O campo é obrigatório'),
