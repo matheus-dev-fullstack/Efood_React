@@ -1,7 +1,3 @@
-declare type Product = {
-  id: number;
-  price: number;
-};
 
 type PurchasePayload = {
   products: Product[];

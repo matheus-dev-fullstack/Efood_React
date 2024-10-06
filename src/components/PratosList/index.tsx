@@ -1,11 +1,11 @@
-import { CardapioItem, Restaurant } from '../../pages/Home';
+import { Restaurant } from '../../pages/Home';
 import PratoCard from '../PratoCard';
 import Fechar from '../../assets/close.png';
 import * as S from './styles';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootReducer } from '../../store';
-import { add, open } from '../../store/reducers/cart';
+import { add, openCart, CardapioItem } from '../../store/reducers/cart';
 import { Item } from '../RestaurantList/styles';
 
 export type Props = {
@@ -20,7 +20,7 @@ const PratosList = ({ cardapio }: Props) => {
   const dispatch = useDispatch();
 
   const addToCart = (item: CardapioItem) => {
-    dispatch(open());
+    dispatch(openCart());
     dispatch(add(item));
     closeModal();
   };
