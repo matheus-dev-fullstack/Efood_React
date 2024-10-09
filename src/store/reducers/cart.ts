@@ -122,12 +122,19 @@ const cartSlice = createSlice({
     closeAddress: (state) => {
       state.adressOpen = false;
     },
-    openPaymemt: (state) => {
+    openPayment: (state) => {
       state.paymentOpen = true;
     },
 
-    closePaymemt: (state) => {
+    closePayment: (state) => {
       state.paymentOpen = false;
+    },
+    openThanks: (state) => {
+      state.thanksOpen = true;
+    },
+
+    closeThanks: (state) => {
+      state.thanksOpen = false;
     },
 
     addAddressInfos: (state, action: PayloadAction<clientAddress>) => {
@@ -148,8 +155,8 @@ export const {
   closeCart,
   openAddress,
   closeAddress,
-  openPaymemt,
-  closePaymemt,
+  openPayment,
+  closePayment,
 
   addAddressInfos,
   addCardInfos

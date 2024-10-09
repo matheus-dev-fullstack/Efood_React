@@ -41,9 +41,7 @@ const Cart = () => {
 
   return (
     <>
-      {/* <S.Container className={isOpen ? 'is-open' : ''}> */}
-      <S.Container className="is-open">
-        {/* <Container> */}
+      <S.Container className={cartIsOpen ? 'is-open' : ''}>
         <S.Overlay onClick={fecharCarrinho} />
         <S.Sidebar>
           {cartIsOpen && (

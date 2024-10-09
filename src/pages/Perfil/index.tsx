@@ -9,10 +9,8 @@ import {
 } from '../../services/api';
 import Cart from '../../components/Cart';
 import { CardapioItem } from '../../store/reducers/cart';
-
-interface PratosListData {
-  cardapio: CardapioItem[];
-}
+import FormLocation from '../../components/FormLocation';
+import FormPayment from '../../components/FormPayment';
 
 const Perfil = () => {
   const { id } = useParams();
@@ -21,13 +19,11 @@ const Perfil = () => {
   const { data: restaurantes } = useGetRestaurantsByIdQuery(Number(id));
 
   if (heroRestaurant && restaurantes) {
-    const pratosListData: PratosListData = {
-      cardapio: restaurantes.cardapio
-    };
-
     return (
       <>
         <Cart />
+        <FormLocation />
+        <FormPayment />
         <HeaderPerfil />
         <Hero restaurant={heroRestaurant} />
         <PratosList cardapio={restaurantes} />
@@ -38,25 +34,3 @@ const Perfil = () => {
 };
 
 export default Perfil;
-
-// if (!pratos) {
-//   return <h3>Carregando...</h3>
-// }
-// if (!heroRestaurant) {
-//   return <h3>Carregando...</h3>
-// }
-
-// const [pratos, setPratos] = useState<CardapioItem[]>([])
-// const [restaurantes, setRestaurantes] = useState<Restaurant>()
-// useEffect(() => {
-//   axios
-//     .get(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-//     .then((res) => {
-//       setRestaurantes(res.data)
-//     })
-// }, [id])
-// useEffect(() => {
-//   axios
-//     .get(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-//     .then((res) => setPratos(res.data.cardapio))
-// }, [id])

@@ -6,15 +6,6 @@ import { useGetRestaurantsQuery } from '../../services/api';
 import Cart from '../../components/Cart';
 import { CardapioItem } from '../../store/reducers/cart';
 
-// export type CardapioItem = {
-//   id: number;
-//   foto: string;
-//   preco: number;
-//   nome: string;
-//   descricao: string;
-//   porcao: string;
-// };
-
 export type Restaurant = {
   id: number;
   titulo: string;

@@ -1,18 +1,28 @@
 import * as S from './styles';
 import { useFormik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
+import { RootReducer } from '../../store';
+import { closePayment, openAddress } from '../../store/reducers/cart';
 
-interface FormPaymentProps {
-  closeCart: () => void;
-  goToSuccessMessage: () => void;
-  goToCheckout: () => void;
-}
+const FormPayment = () => {
+  const { paymentOpen, items } = useSelector(
+    (state: RootReducer) => state.cart
+  );
+  const dispatch = useDispatch();
 
-const FormPayment: React.FC<FormPaymentProps> = ({
-  closeCart,
-  goToSuccessMessage,
-  goToCheckout
-}) => {
+  const fechar = () => {
+    dispatch(closePayment());
+  };
+  const irParaMensagemFinal = () => {
+    dispatch(openThanks());
+    dispatch(closePayment());
+  };
+  const voltarParaLocalizacao = () => {
+    dispatch(openAddress());
+    dispatch(closePayment());
+  };
+
   const form = useFormik({
     initialValues: {
       cardName: '',
@@ -41,14 +51,13 @@ const FormPayment: React.FC<FormPaymentProps> = ({
 
     onSubmit: (values) => {
       console.log(values);
-      goToSuccessMessage();
     }
   });
 
   return (
     <>
-      <S.Container className="is-open">
-        <S.Overlay onClick={closeCart} />
+      <S.Container className={paymentOpen ? 'is-open' : ''}>
+        <S.Overlay onClick={fechar} />
         <S.Sidebar>
           <S.Title>Entrega</S.Title>
           <S.Form onSubmit={form.handleSubmit}>
@@ -119,10 +128,10 @@ const FormPayment: React.FC<FormPaymentProps> = ({
               </S.Local>
             </S.localization>
             <S.Buttons>
-              <S.CheckoutButton type="submit">
+              <S.CheckoutButton onClick={irParaMensagemFinal}>
                 Finalizar pagamento
               </S.CheckoutButton>
-              <S.CheckoutButton onClick={goToCheckout}>
+              <S.CheckoutButton onClick={voltarParaLocalizacao}>
                 Voltar para a edição de endereço
               </S.CheckoutButton>
             </S.Buttons>
@@ -133,3 +142,6 @@ const FormPayment: React.FC<FormPaymentProps> = ({
   );
 };
 export default FormPayment;
+function openThanks(): any {
+  throw new Error('Function not implemented.');
+}

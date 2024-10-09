@@ -1,18 +1,27 @@
 import * as S from './styles';
 import { useFormik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
+import { RootReducer } from '../../store';
+import { closeAddress, openCart, openPayment } from '../../store/reducers/cart';
 
-interface FormLocationProps {
-  closeCart: () => void;
-  goToPayment: () => void;
-  goToCart: () => void;
-}
+const FormLocation = () => {
+  const { adressOpen, items } = useSelector((state: RootReducer) => state.cart);
+  const dispatch = useDispatch();
 
-const FormLocation: React.FC<FormLocationProps> = ({
-  closeCart,
-  goToPayment,
-  goToCart
-}) => {
+  const fecharCarrinho = () => {
+    dispatch(closeAddress());
+  };
+
+  const irParaPagamento = () => {
+    dispatch(openPayment());
+    dispatch(closeAddress());
+  };
+  const voltarParaCarrinho = () => {
+    dispatch(openCart());
+    dispatch(closeAddress());
+  };
+
   const form = useFormik({
     initialValues: {
       fullName: '',
@@ -45,15 +54,13 @@ const FormLocation: React.FC<FormLocationProps> = ({
 
     onSubmit: (values) => {
       console.log(values);
-      goToPayment();
     }
   });
 
   return (
     <>
-      <S.Container className="is-open">
-        {/* <Container> */}
-        <S.Overlay onClick={closeCart} />
+      <S.Container className={adressOpen ? 'is-open' : ''}>
+        <S.Overlay onClick={fecharCarrinho} />
         <S.Sidebar>
           <S.Title>Entregas</S.Title>
           <S.Form onSubmit={form.handleSubmit}>
@@ -134,10 +141,10 @@ const FormLocation: React.FC<FormLocationProps> = ({
               value={form.values.complement}
             />
             <S.Buttons>
-              <S.CheckoutButton type="submit">
+              <S.CheckoutButton type="button" onClick={irParaPagamento}>
                 Continuar com o pagamento
               </S.CheckoutButton>
-              <S.CheckoutButton type="button" onClick={goToCart}>
+              <S.CheckoutButton type="button" onClick={voltarParaCarrinho}>
                 Voltar para o carrinho
               </S.CheckoutButton>
             </S.Buttons>
