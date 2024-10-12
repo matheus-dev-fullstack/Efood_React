@@ -38,6 +38,8 @@ export const QuantidadeProdutos = styled.button`
   font-size: 18px;
   font-weight: 900;
 
+  cursor: pointer;
+
   color: ${cores.corTexto};
   background-color: transparent;
   border: none;

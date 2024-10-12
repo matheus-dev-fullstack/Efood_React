@@ -25,7 +25,6 @@ const Perfil = () => {
         <Cart />
         <FormLocation />
         <FormPayment />
-        <SuccessMessage />
         <HeaderPerfil />
         <Hero restaurant={heroRestaurant} />
         <PratosList cardapio={restaurantes} />

@@ -9,6 +9,7 @@ import {
   openCart,
   openPayment
 } from '../../store/reducers/cart';
+import InputMask from 'react-input-mask';
 
 const FormLocation = () => {
   const { adressOpen, items } = useSelector((state: RootReducer) => state.cart);
@@ -49,14 +50,12 @@ const FormLocation = () => {
         .min(5, 'O nome precisa ter pelo menos 5 caracteres')
         .required('O campo é obrigatório'),
       zipCode: Yup.string()
-        .min(5, 'O nome precisa ter pelo menos 5 caracteres')
+        .min(8, 'O nome precisa ter pelo menos 8 caracteres')
         .required('O campo é obrigatório'),
       addressNumber: Yup.string()
         .min(1, 'O nome precisa ter pelo menos 5 caracteres')
         .required('O campo é obrigatório'),
-      complement: Yup.string()
-        .min(5, 'O nome precisa ter pelo menos 5 caracteres')
-        .notRequired()
+      complement: Yup.string().notRequired()
     }),
 
     onSubmit: (values) => {
@@ -131,13 +130,14 @@ const FormLocation = () => {
             <S.localization>
               <S.Local>
                 <label htmlFor="zipCode">CEP</label>
-                <input
+                <InputMask
                   id="zipCode"
                   name="zipCode"
                   type="text"
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
                   value={form.values.zipCode}
+                  mask="99999-999"
                 />
                 {form.touched.zipCode && form.errors.zipCode && (
                   <div>{form.errors.zipCode}</div>
