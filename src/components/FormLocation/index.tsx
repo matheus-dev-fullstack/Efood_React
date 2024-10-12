@@ -3,7 +3,12 @@ import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { RootReducer } from '../../store';
-import { closeAddress, openCart, openPayment } from '../../store/reducers/cart';
+import {
+  addAddressInfos,
+  closeAddress,
+  openCart,
+  openPayment
+} from '../../store/reducers/cart';
 
 const FormLocation = () => {
   const { adressOpen, items } = useSelector((state: RootReducer) => state.cart);
@@ -13,13 +18,15 @@ const FormLocation = () => {
     dispatch(closeAddress());
   };
 
-  const irParaPagamento = () => {
-    dispatch(openPayment());
-    dispatch(closeAddress());
-  };
   const voltarParaCarrinho = () => {
     dispatch(openCart());
     dispatch(closeAddress());
+  };
+
+  const getTotalPrice = () => {
+    return items.reduce((acum, valorAtual) => {
+      return (acum += valorAtual.preco!);
+    }, 0);
   };
 
   const form = useFormik({
@@ -27,7 +34,7 @@ const FormLocation = () => {
       fullName: '',
       address: '',
       city: '',
-      cep: '',
+      zipCode: '',
       addressNumber: '',
       complement: ''
     },
@@ -41,11 +48,11 @@ const FormLocation = () => {
       city: Yup.string()
         .min(5, 'O nome precisa ter pelo menos 5 caracteres')
         .required('O campo é obrigatório'),
-      cep: Yup.string()
+      zipCode: Yup.string()
         .min(5, 'O nome precisa ter pelo menos 5 caracteres')
         .required('O campo é obrigatório'),
       addressNumber: Yup.string()
-        .min(5, 'O nome precisa ter pelo menos 5 caracteres')
+        .min(1, 'O nome precisa ter pelo menos 5 caracteres')
         .required('O campo é obrigatório'),
       complement: Yup.string()
         .min(5, 'O nome precisa ter pelo menos 5 caracteres')
@@ -53,17 +60,41 @@ const FormLocation = () => {
     }),
 
     onSubmit: (values) => {
-      console.log(values);
+      dispatch(
+        addAddressInfos({
+          products: items.map((item) => ({
+            id: item.id,
+            price: getTotalPrice()
+          })),
+
+          delivery: {
+            receiver: values.fullName,
+            address: {
+              description: values.address,
+              city: values.city,
+              zipCode: values.zipCode,
+              number: Number(values.addressNumber),
+              complement: values.complement
+            }
+          }
+        })
+      );
+      dispatch(openPayment());
+      dispatch(closeAddress());
     }
   });
 
+  // const handleGoToPayment = () => {
+  //   form.handleSubmit();
+  // };
+
   return (
-    <>
+    <form onSubmit={form.handleSubmit}>
       <S.Container className={adressOpen ? 'is-open' : ''}>
         <S.Overlay onClick={fecharCarrinho} />
         <S.Sidebar>
           <S.Title>Entregas</S.Title>
-          <S.Form onSubmit={form.handleSubmit}>
+          <S.DivForm>
             <label htmlFor="fullName">Quem irá receber</label>
             <input
               id="fullName"
@@ -103,17 +134,17 @@ const FormLocation = () => {
             )}
             <S.localization>
               <S.Local>
-                <label htmlFor="cep">CEP</label>
+                <label htmlFor="zipCode">CEP</label>
                 <input
-                  id="cep"
-                  name="cep"
+                  id="zipCode"
+                  name="zipCode"
                   type="text"
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
-                  value={form.values.cep}
+                  value={form.values.zipCode}
                 />
-                {form.touched.cep && form.errors.cep && (
-                  <div>{form.errors.cep}</div>
+                {form.touched.zipCode && form.errors.zipCode && (
+                  <div>{form.errors.zipCode}</div>
                 )}
               </S.Local>
               <S.Local>
@@ -141,17 +172,17 @@ const FormLocation = () => {
               value={form.values.complement}
             />
             <S.Buttons>
-              <S.CheckoutButton type="button" onClick={irParaPagamento}>
+              <S.CheckoutButton type="submit">
                 Continuar com o pagamento
               </S.CheckoutButton>
               <S.CheckoutButton type="button" onClick={voltarParaCarrinho}>
                 Voltar para o carrinho
               </S.CheckoutButton>
             </S.Buttons>
-          </S.Form>
+          </S.DivForm>
         </S.Sidebar>
       </S.Container>
-    </>
+    </form>
   );
 };
 export default FormLocation;

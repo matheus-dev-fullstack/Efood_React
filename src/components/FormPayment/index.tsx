@@ -57,6 +57,7 @@ const FormPayment = () => {
   return (
     <>
       <S.Container className={paymentOpen ? 'is-open' : ''}>
+        {/* <S.Container className="is-open"> */}
         <S.Overlay onClick={fechar} />
         <S.Sidebar>
           <S.Title>Entrega</S.Title>

@@ -107,7 +107,7 @@ export const CheckoutContainer = styled.div`
     display: flex;
   }
 `;
-export const Form = styled.form`
+export const DivForm = styled.div`
   display: flex;
   flex-direction: column;
 

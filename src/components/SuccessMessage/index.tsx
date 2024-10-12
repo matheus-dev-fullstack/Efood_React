@@ -1,16 +1,17 @@
 import * as S from './styles';
 import { useFormik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
+import { RootReducer } from '../../store';
 
-interface SuccessMessageProps {
-  closeCart: () => void;
-  conclude: () => void;
-}
+const SuccessMessage = () => {
+  const { thanksOpen, items } = useSelector((state: RootReducer) => state.cart);
+  const dispatch = useDispatch();
 
-const SuccessMessage: React.FC<SuccessMessageProps> = ({
-  closeCart,
-  conclude
-}) => {
+  const fechar = () => {
+    dispatch(closeThanks());
+  };
+
   const form = useFormik({
     initialValues: {
       fullName: '',
@@ -34,7 +35,7 @@ const SuccessMessage: React.FC<SuccessMessageProps> = ({
         .min(5, 'O nome precisa ter pelo menos 5 caracteres')
         .required('O campo é obrigatório'),
       addressNumber: Yup.string()
-        .min(5, 'O nome precisa ter pelo menos 5 caracteres')
+        .min(1, 'O nome precisa ter pelo menos 1 caracter')
         .required('O campo é obrigatório'),
       complement: Yup.string()
         .min(5, 'O nome precisa ter pelo menos 5 caracteres')
@@ -43,14 +44,14 @@ const SuccessMessage: React.FC<SuccessMessageProps> = ({
 
     onSubmit: (values) => {
       console.log(values);
-      conclude();
+      // conclude();
     }
   });
 
   return (
     <>
-      <S.Container className="is-open">
-        <S.Overlay onClick={closeCart} />
+      <S.Container className={thanksOpen ? 'is-open' : ''}>
+        <S.Overlay onClick={fechar} />
         <S.Sidebar>
           <S.Title>Pedido realizado - ORDER ID</S.Title>
           <S.FinalMessage>
@@ -71,7 +72,7 @@ const SuccessMessage: React.FC<SuccessMessageProps> = ({
             gastronômica. Bom apetite!
           </S.FinalMessage>
           <S.Buttons>
-            <S.CheckoutButton onClick={conclude}>Concluir</S.CheckoutButton>
+            <S.CheckoutButton onClick={closeThanks}>Concluir</S.CheckoutButton>
           </S.Buttons>
         </S.Sidebar>
       </S.Container>
@@ -79,3 +80,6 @@ const SuccessMessage: React.FC<SuccessMessageProps> = ({
   );
 };
 export default SuccessMessage;
+function closeThanks(): any {
+  throw new Error('Function not implemented.');
+}
