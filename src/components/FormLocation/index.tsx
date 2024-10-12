@@ -84,10 +84,6 @@ const FormLocation = () => {
     }
   });
 
-  // const handleGoToPayment = () => {
-  //   form.handleSubmit();
-  // };
-
   return (
     <form onSubmit={form.handleSubmit}>
       <S.Container className={adressOpen ? 'is-open' : ''}>

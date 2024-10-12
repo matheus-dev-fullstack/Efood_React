@@ -11,6 +11,7 @@ import Cart from '../../components/Cart';
 import { CardapioItem } from '../../store/reducers/cart';
 import FormLocation from '../../components/FormLocation';
 import FormPayment from '../../components/FormPayment';
+import SuccessMessage from '../../components/SuccessMessage';
 
 const Perfil = () => {
   const { id } = useParams();
@@ -24,6 +25,7 @@ const Perfil = () => {
         <Cart />
         <FormLocation />
         <FormPayment />
+        <SuccessMessage />
         <HeaderPerfil />
         <Hero restaurant={heroRestaurant} />
         <PratosList cardapio={restaurantes} />

@@ -1,9 +1,14 @@
 import * as S from './styles';
 import { useFormik } from 'formik';
+import InputMask from 'react-input-mask';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { RootReducer } from '../../store';
-import { closePayment, openAddress } from '../../store/reducers/cart';
+import {
+  closePayment,
+  openAddress,
+  openThanks
+} from '../../store/reducers/cart';
 
 const FormPayment = () => {
   const { paymentOpen, items } = useSelector(
@@ -36,16 +41,16 @@ const FormPayment = () => {
         .min(5, 'O nome precisa ter pelo menos 5 caracteres')
         .required('O campo é obrigatório'),
       cardNumber: Yup.string()
-        .min(5, 'O nome precisa ter pelo menos 5 caracteres')
+        .min(13, 'O nome precisa ter pelo menos 13 caracteres')
         .required('O campo é obrigatório'),
       cvv: Yup.string()
-        .min(5, 'O nome precisa ter pelo menos 5 caracteres')
+        .min(3, 'O nome precisa ter pelo menos 3 caracteres')
         .required('O campo é obrigatório'),
       cardEndMonth: Yup.string()
-        .min(5, 'O nome precisa ter pelo menos 5 caracteres')
+        .min(2, 'O nome precisa ter pelo menos 2 caracteres')
         .required('O campo é obrigatório'),
       cardEndYear: Yup.string()
-        .min(5, 'O nome precisa ter pelo menos 5 caracteres')
+        .min(2, 'O nome precisa ter pelo menos 2 caracteres')
         .required('O campo é obrigatório')
     }),
 
@@ -75,25 +80,28 @@ const FormPayment = () => {
               <div>{form.errors.cardName}</div>
             )}
             <label htmlFor="cardNumber">Número do cartão</label>
-            <input
+            <InputMask
               id="cardNumber"
               name="cardNumber"
               type="string"
               onChange={form.handleChange}
               onBlur={form.handleBlur}
               value={form.values.cardNumber}
+              mask="9999 9999 9999 9999"
             />
             {form.touched.cardName && form.errors.cardName && (
               <div>{form.errors.cardName}</div>
             )}
             <label htmlFor="cvv">CVV</label>
-            <input
+            <InputMask
               id="cvv"
               name="cvv"
               type="string"
               onChange={form.handleChange}
               onBlur={form.handleBlur}
               value={form.values.cvv}
+              mask="999"
+              maxLength={3}
             />
             {form.touched.cvv && form.errors.cvv && (
               <div>{form.errors.cvv}</div>
@@ -108,6 +116,7 @@ const FormPayment = () => {
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
                   value={form.values.cardEndMonth}
+                  maxLength={2}
                 />
                 {form.touched.cardEndMonth && form.errors.cardEndMonth && (
                   <div>{form.errors.cardEndMonth}</div>
@@ -122,6 +131,7 @@ const FormPayment = () => {
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
                   value={form.values.cardEndYear}
+                  maxLength={4}
                 />
                 {form.touched.cardEndYear && form.errors.cardEndYear && (
                   <div>{form.errors.cardEndYear}</div>
@@ -143,6 +153,3 @@ const FormPayment = () => {
   );
 };
 export default FormPayment;
-function openThanks(): any {
-  throw new Error('Function not implemented.');
-}

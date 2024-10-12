@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { RootReducer } from '../../store';
+import { closeThanks } from '../../store/reducers/cart';
 
 const SuccessMessage = () => {
   const { thanksOpen, items } = useSelector((state: RootReducer) => state.cart);
@@ -51,6 +52,7 @@ const SuccessMessage = () => {
   return (
     <>
       <S.Container className={thanksOpen ? 'is-open' : ''}>
+        {/* <S.Container className="is-open"> */}
         <S.Overlay onClick={fechar} />
         <S.Sidebar>
           <S.Title>Pedido realizado - ORDER ID</S.Title>
@@ -72,7 +74,7 @@ const SuccessMessage = () => {
             gastronômica. Bom apetite!
           </S.FinalMessage>
           <S.Buttons>
-            <S.CheckoutButton onClick={closeThanks}>Concluir</S.CheckoutButton>
+            <S.CheckoutButton onClick={fechar}>Concluir</S.CheckoutButton>
           </S.Buttons>
         </S.Sidebar>
       </S.Container>
@@ -80,6 +82,3 @@ const SuccessMessage = () => {
   );
 };
 export default SuccessMessage;
-function closeThanks(): any {
-  throw new Error('Function not implemented.');
-}

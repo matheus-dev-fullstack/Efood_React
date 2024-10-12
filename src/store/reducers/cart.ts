@@ -129,9 +129,11 @@ const cartSlice = createSlice({
     closePayment: (state) => {
       state.paymentOpen = false;
     },
+    /*************  ✨ Codeium Command 🌟  *************/
     openThanks: (state) => {
       state.thanksOpen = true;
     },
+    /******  25ff72dd-13d0-4896-9848-cf356ce3a6b0  *******/
 
     closeThanks: (state) => {
       state.thanksOpen = false;
@@ -157,6 +159,8 @@ export const {
   closeAddress,
   openPayment,
   closePayment,
+  openThanks,
+  closeThanks,
 
   addAddressInfos,
   addCardInfos
